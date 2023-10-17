@@ -1,8 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class WebView extends StatefulWidget {
-  const WebView({super.key});
+  final String link;
+  const WebView({
+    Key? key,
+    required this.link,
+  }) : super(key: key);
 
   @override
   State<WebView> createState() => _WebViewState();
@@ -25,12 +30,11 @@ class _WebViewState extends State<WebView> {
           onWebResourceError: (WebResourceError error) {},
         ),
       )
-      ..loadRequest(Uri.parse('https://pub.dev/packages/webview_flutter'));
+      ..loadRequest(Uri.parse(widget.link));
   }
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     openWebView();
   }
