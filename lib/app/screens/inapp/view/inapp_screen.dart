@@ -1,10 +1,11 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_price_container.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_texts.dart';
-import 'package:ai_voice_changer_app/app/theme/voice_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 import '../../../components/custom_button.dart';
+import '../../home/view/home_screen.dart';
+import '../widgets/close_button.dart';
 import '../widgets/webview_texts.dart';
 
 class InAppScreen extends StatelessWidget {
@@ -32,26 +33,9 @@ class InAppScreen extends StatelessWidget {
                     Image(image: MyConstants.inappthird),
                     Image(image: MyConstants.inappfourth)
                   ]),
-              Positioned(
-                top: 20,
-                right: 20,
-                child: Container(
-                  width: width * 0.125,
-                  height: height * 0.1,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle, // Yuvarlak şekil
-                    color: Colors.grey.withOpacity(0.6), // Dairesel arka plan rengi
-                  ),
-                  child: Center(
-                    child: IconButton(
-                        onPressed: () {},
-                        icon: const Icon(
-                          VoiceIcons.btnClose,
-                          size: 30,
-                          color: Colors.white,
-                        )),
-                  ),
-                ),
+              ClosedButton(
+                width: width * 0.125,
+                height: height * 0.1,
               ),
               Positioned(
                 bottom: 0,
@@ -93,7 +77,13 @@ class InAppScreen extends StatelessWidget {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ));
+                },
                 text: MyConstants.countinue,
               )),
           const Row(
