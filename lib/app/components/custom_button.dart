@@ -14,7 +14,7 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.sizeOf(context).width,
-      height: 60,
+      height: MediaQuery.sizeOf(context).height * 0.08,
       decoration: BoxDecoration(
         gradient: const LinearGradient(
           begin: Alignment(-0.98, -0.18),

@@ -16,4 +16,7 @@ class MyConstants {
   static const String inappSecondtext = 'Using Example Prompts';
   static const String inappThirdtext = 'Reach All Rappers and Beats';
   static const AssetImage inappIcons = AssetImage('assets/icons/icon_premium.png');
+  static const String checkBoxText1 = 'Lifetime ';
+  static const String checkBoxText2 = '\$10';
+  static const String countinue = 'Countinue';
 }

@@ -61,7 +61,7 @@ class OnboardingPage extends StatelessWidget {
                       ),
                     );
                   },
-                  text: 'Countinue'),
+                  text: MyConstants.countinue),
             )
           ],
         ),

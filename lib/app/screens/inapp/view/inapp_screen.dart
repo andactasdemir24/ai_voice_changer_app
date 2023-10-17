@@ -1,12 +1,17 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_price_container.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_texts.dart';
 import 'package:flutter/material.dart';
+
+import '../../../components/custom_button.dart';
+import '../widgets/url_launcher_button.dart';
 
 class InAppScreen extends StatelessWidget {
   const InAppScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.sizeOf(context).height;
     return Scaffold(
         body: SafeArea(
       child: Column(
@@ -24,18 +29,18 @@ class InAppScreen extends StatelessWidget {
               Image(image: MyConstants.inappfourth),
             ],
           ),
+          SizedBox(height: height * 0.03),
           const Text(
             MyConstants.inappTrypremium,
             style: TextStyle(
-              color: Colors.black,
-              fontSize: 34,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w700,
-              height: 0.04,
-              letterSpacing: 0.37,
-            ),
+                color: Colors.black,
+                fontSize: 34,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w700,
+                height: 0.04,
+                letterSpacing: 0.37),
           ),
-          const SizedBox(height: 30),
+          SizedBox(height: height * 0.05),
           const Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -43,7 +48,21 @@ class InAppScreen extends StatelessWidget {
               CustomText(text: MyConstants.inappSecondtext),
               CustomText(text: MyConstants.inappThirdtext),
             ],
-          )
+          ),
+          SizedBox(height: height * 0.03),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: CustomPriceContainer(),
+          ),
+          SizedBox(height: height * 0.03),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CustomButton(
+              onPressed: () {},
+              text: MyConstants.countinue,
+            ),
+          ),
+          const UrlLauncherButton(),
         ],
       ),
     ));
