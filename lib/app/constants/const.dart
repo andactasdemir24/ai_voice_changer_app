@@ -19,4 +19,7 @@ class MyConstants {
   static const String checkBoxText1 = 'Lifetime ';
   static const String checkBoxText2 = '\$10';
   static const String countinue = 'Countinue';
+  static const String privacy = 'Privacy Policy';
+  static const String restore = 'Restore Purchase';
+  static const String terms = 'Terms of Use';
 }

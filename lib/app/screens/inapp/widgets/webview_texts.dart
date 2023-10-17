@@ -5,9 +5,11 @@ import 'package:ai_voice_changer_app/app/screens/inapp/view/webview.dart';
 
 class UrlLauncherButton extends StatefulWidget {
   final String link;
+  final String text;
   const UrlLauncherButton({
     Key? key,
     required this.link,
+    required this.text,
   }) : super(key: key);
 
   @override
@@ -27,10 +29,10 @@ class _UrlLauncherButtonState extends State<UrlLauncherButton> {
                 ),
               ));
         },
-        child: const Text(
-          'Privacy Policy',
+        child: Text(
+          widget.text,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             color: Color(0xFF2D2D2D),
             fontSize: 11,
             fontFamily: 'Poppins',
