@@ -25,6 +25,7 @@ class MyConstants {
   static const String terms = 'Terms of Use';
   static const String appBarText = 'AI Voices';
   static const String startHere = 'Start here';
+  static const String startHere2 = 'Generate a rap song in a few easy steps!';
   static const String generateText = 'What should AI character say?';
   static const String generatehintText = 'Write your prompts';
 }

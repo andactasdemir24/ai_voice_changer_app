@@ -32,7 +32,7 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(
               width: 240,
-              child: Text('Generate a rap song in a few easy steps!',
+              child: Text(MyConstants.startHere2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
