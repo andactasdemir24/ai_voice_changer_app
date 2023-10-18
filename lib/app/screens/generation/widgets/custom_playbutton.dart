@@ -15,8 +15,8 @@ class PlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: width * 0.25,
-      height: height * 0.13,
+      width: width * 0.2,
+      height: height * 0.1,
       clipBehavior: Clip.antiAlias,
       decoration: const BoxDecoration(),
       child: Stack(

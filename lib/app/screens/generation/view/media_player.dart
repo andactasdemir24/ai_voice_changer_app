@@ -5,6 +5,7 @@ import 'package:ai_voice_changer_app/app/theme/voice_icons_icons.dart';
 import 'package:flutter/material.dart';
 import '../../home/model/persons_model.dart';
 import '../widgets/custom_playbutton.dart';
+import '../widgets/custom_share_button.dart';
 
 class MediaPlayerScreen extends StatefulWidget {
   const MediaPlayerScreen({super.key});
@@ -28,14 +29,14 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
         children: <Widget>[
           const AspectRatio(aspectRatio: 100 / 10),
           Container(
-            height: height * 0.2,
+            height: height * 0.22,
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.deepPurpleAccent, // Gri arka plan rengi
             ),
             child: Center(
               child: CircleAvatar(
-                radius: 70,
+                radius: 80,
                 backgroundImage: AssetImage(globalPerson.image),
                 backgroundColor: const Color(0xffececec),
               ),
@@ -94,15 +95,20 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
               ),
             ],
           ),
-          const AspectRatio(aspectRatio: 150 / 10),
+          const AspectRatio(aspectRatio: 250 / 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
-              PlayButton(width: width, height: height),
+              GestureDetector(onTap: () {}, child: PlayButton(width: width, height: height)),
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaPlus15)),
             ],
           ),
+          const AspectRatio(aspectRatio: 60 / 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: CustomShareButton(width: width),
+          )
         ],
       ),
     );
