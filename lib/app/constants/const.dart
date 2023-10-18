@@ -28,4 +28,11 @@ class MyConstants {
   static const String startHere2 = 'Generate a rap song in a few easy steps!';
   static const String generateText = 'What should AI character say?';
   static const String generatehintText = 'Write your prompts';
+  static const String settingsText = 'Settings';
+  static const String settingsText1 = 'Premium';
+  static const String settingsText2 = 'Share App';
+  static const String settingsText3 = 'Rate Us';
+  static const String settingsText4 = 'Contact Us';
+  static const String settingsText5 = 'Terms of Service';
+  static const String settingsText6 = 'Privacy Policy';
 }

@@ -1,6 +1,7 @@
 import 'package:ai_voice_changer_app/app/components/custom_button.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/screens/home/view/generate_screen.dart';
+import 'package:ai_voice_changer_app/app/screens/settings/view/settings_screen.dart';
 import 'package:ai_voice_changer_app/app/theme/voice_icons_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,11 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        icon: IconButton(onPressed: () {}, icon: const Icon(VoiceIcons.group)),
+        icon: IconButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const SettingsScreen()));
+            },
+            icon: const Icon(VoiceIcons.group)),
         text: MyConstants.appBarText,
       ),
       body: Center(
