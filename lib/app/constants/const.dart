@@ -11,6 +11,8 @@ class MyConstants {
   static const AssetImage inappsecond = AssetImage('assets/images/img_premium2.png');
   static const AssetImage inappthird = AssetImage('assets/images/img_premium3.png');
   static const AssetImage inappfourth = AssetImage('assets/images/img_premium4.png');
+  static const AssetImage mediaPlus15 = AssetImage('assets/images/left.png');
+  static const AssetImage mediaMinus15 = AssetImage('assets/images/right.png');
   static const String inappTrypremium = 'Try Premium!';
   static const String inappFirsttext = 'Limited Ads';
   static const String inappSecondtext = 'Using Example Prompts';
@@ -24,6 +26,7 @@ class MyConstants {
   static const String restore = 'Restore Purchase';
   static const String terms = 'Terms of Use';
   static const String appBarText = 'AI Voices';
+  static const String mediaPlayerText = 'AI Voice';
   static const String startHere = 'Start here';
   static const String startHere2 = 'Generate a rap song in a few easy steps!';
   static const String generateText = 'What should AI character say?';

@@ -14,8 +14,6 @@ class LottieScreen extends StatefulWidget {
 class _LottieScreenState extends State<LottieScreen> {
   @override
   Widget build(BuildContext context) {
-    var height = MediaQuery.sizeOf(context).height;
-    var width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
