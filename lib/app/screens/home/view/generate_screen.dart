@@ -1,5 +1,6 @@
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/screens/generation/view/lottie_screen.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:flutter/material.dart';
 
@@ -75,7 +76,15 @@ class _GenerateScreenState extends State<GenerateScreen> {
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: CustomButton(onPressed: () {}, text: MyConstants.generate), //CUSTOMBUTTON
+              child: CustomButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LottieScreen(),
+                        ));
+                  },
+                  text: MyConstants.generate), //CUSTOMBUTTON
             ),
           ],
         ),

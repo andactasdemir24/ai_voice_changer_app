@@ -1,13 +1,15 @@
-import 'package:ai_voice_changer_app/app/screens/main/main_view.dart';
+import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import 'app/screens/home/view/generate_list.dart';
+import 'app/screens/home/view/generate_screen.dart';
 import 'app/screens/onboarding/viewmodel/onboarding_view_model.dart';
 
 void main() {
   runApp(MultiProvider(
-    providers: [ChangeNotifierProvider(create: (_) => OnboardingViewModel())],
+    providers: [
+      ChangeNotifierProvider(create: (_) => OnboardingViewModel()),
+      ChangeNotifierProvider(create: (_) => GenerateViewModel()),
+    ],
     child: const MyApp(),
   ));
 }
@@ -23,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const GenerateScreenList(),
+      home: const GenerateScreen(),
     );
   }
 }

@@ -35,4 +35,6 @@ class MyConstants {
   static const String settingsText4 = 'Contact Us';
   static const String settingsText5 = 'Terms of Service';
   static const String settingsText6 = 'Privacy Policy';
+  static const String lottieText = 'Generating  \nAI Voice';
+  static const String lottieText2 = "Please wait while we're generating your song\nkeep the app open";
 }
