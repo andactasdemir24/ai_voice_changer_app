@@ -1,7 +1,7 @@
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
+import 'package:ai_voice_changer_app/app/screens/main/main_view.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'app/screens/home/view/generate_screen.dart';
 import 'app/screens/onboarding/viewmodel/onboarding_view_model.dart';
 
 void main() {
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const GenerateScreen(),
+      home: const MainView(),
     );
   }
 }

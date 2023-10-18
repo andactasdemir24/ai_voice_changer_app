@@ -41,6 +41,7 @@ dependencies:
   webview_flutter: ^4.4.1
   lottie: ^2.6.0
   share_plus: ^7.2.1
+  uuid: ^4.1.0
 
 dev_dependencies:
   flutter_test:

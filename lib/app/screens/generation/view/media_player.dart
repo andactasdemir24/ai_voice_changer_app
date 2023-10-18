@@ -1,7 +1,6 @@
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
-import 'package:ai_voice_changer_app/app/theme/voice_icons_icons.dart';
 import 'package:flutter/material.dart';
 import '../../home/model/persons_model.dart';
 import '../widgets/custom_playbutton.dart';
@@ -30,10 +29,15 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
           const AspectRatio(aspectRatio: 100 / 10),
           Container(
             height: height * 0.22,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.deepPurpleAccent, // Gri arka plan rengi
-            ),
+            decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.deepPurpleAccent, boxShadow: [
+              BoxShadow(
+                color: Colors.black,
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(0, 2),
+              )
+            ] // Gri arka plan rengi
+                ),
             child: Center(
               child: CircleAvatar(
                 radius: 80,
