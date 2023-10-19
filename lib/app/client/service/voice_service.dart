@@ -9,6 +9,7 @@ import '../model/voice_response_model.dart';
 class VoiceService {
   final String baseUrl = 'https://api.fakeyou.com/tts/inference';
   final String baseUrlGet = 'https://api.fakeyou.com/tts/job';
+  String allUrl = '';
 
   Future<String> postVoice(TokenModel tokenModel) async {
     final response = await http.post(
@@ -34,8 +35,8 @@ class VoiceService {
           }
         }
       }
-      print('https://storage.googleapis.com/vocodes-public$path');
-      return "https://storage.googleapis.com/vocodes-public$path";
+      allUrl = "https://storage.googleapis.com/vocodes-public$path";
+      return allUrl;
     } else {
       throw Exception('İstek başarısız oldu. Durum Kodu: ${response.statusCode}');
     }

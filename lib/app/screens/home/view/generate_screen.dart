@@ -1,5 +1,3 @@
-import 'package:ai_voice_changer_app/app/client/model/token_model.dart';
-import 'package:ai_voice_changer_app/app/client/service/voice_service.dart';
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
@@ -8,7 +6,6 @@ import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:uuid/uuid.dart';
 
 import '../../../components/custom_button.dart';
 import '../widgets/person_list_container.dart';

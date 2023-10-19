@@ -1,8 +1,11 @@
+import 'package:ai_voice_changer_app/app/client/service/voice_service.dart';
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../home/model/persons_model.dart';
+import '../../home/viewmodel/generate_viewmodel.dart';
 import '../widgets/custom_playbutton.dart';
 import '../widgets/custom_share_button.dart';
 
@@ -16,14 +19,22 @@ class MediaPlayerScreen extends StatefulWidget {
 class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
   List<PersonModel> persons = PersonModel.persons;
   double sliderValue = 0;
+  VoiceService voiceUrl = VoiceService();
 
   @override
   Widget build(BuildContext context) {
+    final generationViewModel = Provider.of<GenerateViewModel>(context);
+
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     return Scaffold(
       appBar: CustomAppBar(
-          text: MyConstants.appBarText, icon: IconButton(onPressed: () {}, icon: const Icon(Icons.arrow_back_ios_new))),
+          text: MyConstants.appBarText,
+          icon: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios_new))),
       body: Column(
         children: <Widget>[
           const AspectRatio(aspectRatio: 100 / 10),
@@ -31,11 +42,17 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             height: height * 0.22,
             decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.deepPurpleAccent, boxShadow: [
               BoxShadow(
-                color: Colors.black,
+                color: Color.fromARGB(255, 232, 118, 255),
                 spreadRadius: 2,
                 blurRadius: 5,
-                offset: Offset(0, 2),
-              )
+                offset: Offset(-3, 1),
+              ),
+              BoxShadow(
+                color: Color.fromARGB(255, 65, 161, 240), // İkinci renk gölgesi
+                spreadRadius: 0,
+                blurRadius: 5,
+                offset: Offset(1, -2), // İkinci renk gölgesinin farklı bir offset değeri
+              ),
             ] // Gri arka plan rengi
                 ),
             child: Center(
@@ -104,7 +121,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
-              GestureDetector(onTap: () {}, child: PlayButton(width: width, height: height)),
+              GestureDetector(
+                  onTap: () async {
+                    generationViewModel.useVoice(generationViewModel.allUrlVoice);
+                  },
+                  child: PlayButton(width: width, height: height)),
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaPlus15)),
             ],
           ),
