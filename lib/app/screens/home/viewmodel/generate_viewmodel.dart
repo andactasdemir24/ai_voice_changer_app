@@ -2,7 +2,6 @@ import 'package:ai_voice_changer_app/app/client/model/token_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:uuid/uuid.dart';
 import '../../../client/service/voice_service.dart';
 import '../../../constants/global_veriables.dart';
 
@@ -11,10 +10,7 @@ class GenerateViewModel with ChangeNotifier {
   //PersonModel globalPerson = PersonModel(name: 'andac', image: ''); istersen globale değilde buraya da alabilirim
   VoiceService voiceService = VoiceService();
   bool lottieIsSuccsess = false;
-  String allUrlVoice = '';
   final player = AudioPlayer();
-  var uuid = const Uuid();
-
   void holdIndex(int index) {
     globalPerson = persons[index];
     notifyListeners();
@@ -33,17 +29,12 @@ class GenerateViewModel with ChangeNotifier {
     );
 
     try {
-      var ses = await voiceService.postVoice(tokenmodel);
-      allUrlVoice = ses;
+      await voiceService.postVoice(tokenmodel);
       lottieIsSuccsess = true;
     } catch (error) {
       print("Hata: $error");
     } finally {
       notifyListeners();
     }
-  }
-
-  Future<void> useVoice(String url) async {
-    await player.play(UrlSource(url));
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class MyConstants {
   static const AssetImage splashImage = AssetImage('assets/images/voice.png');
+  static const String lottieImage = 'assets/lottie/Lottie.json';
   static const Color linearIndicatorColor = Color(0x78788033);
   static const String onboardingTextBold = 'Welcome to Voice Ai: Rap generator';
   static const String onboardingTextDesc = 'The ultimate\nRap Song generator experience.';
@@ -20,12 +21,13 @@ class MyConstants {
   static const AssetImage inappIcons = AssetImage('assets/icons/icon_premium.png');
   static const String checkBoxText1 = 'Lifetime ';
   static const String checkBoxText2 = '\$10';
-  static const String countinue = 'Countinue';
+  static const String countinue = 'Continue';
   static const String generate = 'Generate';
   static const String privacy = 'Privacy Policy';
   static const String restore = 'Restore Purchase';
   static const String terms = 'Terms of Use';
   static const String appBarText = 'AI Voices';
+  static const String selectAllGenerate = 'Select AI Voice';
   static const String mediaPlayerText = 'AI Voice';
   static const String startHere = 'Start here';
   static const String startHere2 = 'Generate a rap song in a few easy steps!';
@@ -41,4 +43,7 @@ class MyConstants {
   static const String lottieText = 'Generating  \nAI Voice';
   static const String lottieText2 = "Please wait while we're generating your song\nkeep the app open";
   static const String mediaPlayerShareText = "Share";
+  static const String alertTitle = "Empty Prompt";
+  static const String alertContent = "Prompt section should be fill!";
+  static const String alertClose = "Close";
 }

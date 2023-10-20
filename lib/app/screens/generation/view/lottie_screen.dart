@@ -42,7 +42,7 @@ class _LottieScreenState extends State<LottieScreen> {
                 const Spacer(),
                 Center(
                   child: Lottie.asset(
-                    'assets/lottie/Lottie.json',
+                    MyConstants.lottieImage,
                     fit: BoxFit.cover,
                   ),
                 ),

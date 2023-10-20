@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
-import '../../../theme/voice_icons_icons.dart';
-
 class PlayButton extends StatelessWidget {
   const PlayButton({
-    super.key,
+    Key? key,
     required this.width,
     required this.height,
-  });
+    required this.icon,
+  }) : super(key: key);
 
   final double width;
   final double height;
+  final IconButton icon;
 
   @override
   Widget build(BuildContext context) {
@@ -35,16 +35,12 @@ class PlayButton extends StatelessWidget {
                 shadows: [
                   BoxShadow(
                     color: Color(0x726E56FF),
-                    blurRadius: 5.32,
-                    offset: Offset(0, 2.66),
-                    spreadRadius: 0,
+                    blurRadius: 2,
+                    offset: Offset(0, 2),
                   )
                 ],
               ),
-              child: const Icon(
-                VoiceIcons.iconPremium,
-                color: Colors.white,
-              ),
+              child: icon,
             ),
           ),
         ],

@@ -2,10 +2,9 @@ import 'package:ai_voice_changer_app/app/client/service/voice_service.dart';
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import '../../home/model/persons_model.dart';
-import '../../home/viewmodel/generate_viewmodel.dart';
 import '../widgets/custom_playbutton.dart';
 import '../widgets/custom_share_button.dart';
 
@@ -18,13 +17,66 @@ class MediaPlayerScreen extends StatefulWidget {
 
 class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
   List<PersonModel> persons = PersonModel.persons;
-  double sliderValue = 0;
   VoiceService voiceUrl = VoiceService();
+  bool isPlaying = false;
+  final audioPlayer = AudioPlayer();
+
+  Duration duraiton = Duration.zero;
+  Duration position = Duration.zero;
+
+  @override
+  void initState() {
+    super.initState();
+    setAudio();
+    audioPlayer.onPlayerStateChanged.listen((state) {
+      if (mounted) {
+        setState(() {
+          isPlaying = state == PlayerState.playing;
+        });
+      }
+    });
+    audioPlayer.onDurationChanged.listen((newDuration) {
+      if (mounted) {
+        setState(() {
+          duraiton = newDuration;
+        });
+      }
+    });
+    audioPlayer.onPositionChanged.listen((newPosition) {
+      if (mounted) {
+        setState(() {
+          position = newPosition;
+        });
+      }
+    });
+  }
+
+  void setAudio() {
+    audioPlayer.setReleaseMode(ReleaseMode.stop);
+    audioPlayer.setSourceUrl(voiceurl);
+  }
+
+  @override
+  void dispose() {
+    audioPlayer.dispose();
+    super.dispose();
+  }
+
+  String formatTime(Duration duration) {
+    String twoDigits(int n) => n.toString().padLeft(2, '0');
+    final hours = twoDigits(duration.inHours);
+    final minutes = twoDigits(duration.inMinutes.remainder(60));
+    final seconds = twoDigits(duration.inSeconds.remainder(60));
+
+    return [
+      if (duraiton.inHours > 0) hours,
+      minutes,
+      seconds,
+    ].join(':');
+  }
 
   @override
   Widget build(BuildContext context) {
-    final generationViewModel = Provider.of<GenerateViewModel>(context);
-
     var height = MediaQuery.sizeOf(context).height;
     var width = MediaQuery.sizeOf(context).width;
     return Scaffold(
@@ -89,12 +141,13 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             activeColor: Colors.deepPurpleAccent,
             inactiveColor: Colors.grey,
             min: 0,
-            max: 100,
-            value: sliderValue,
-            onChanged: (double value) {
-              setState(() {
-                sliderValue = value;
-              });
+            max: duraiton.inSeconds.toDouble(),
+            value: position.inSeconds.toDouble(),
+            onChanged: (value) async {
+              final position = Duration(seconds: value.toInt());
+              await audioPlayer.seek(position);
+
+              await audioPlayer.resume();
             },
           ),
           Row(
@@ -103,14 +156,14 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
               Padding(
                 padding: const EdgeInsets.only(left: 25),
                 child: Text(
-                  sliderValue.toStringAsFixed(2),
+                  formatTime(position),
                   style: const TextStyle(fontSize: 15),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 25),
                 child: Text(
-                  sliderValue.toStringAsFixed(2),
+                  formatTime(duraiton - position),
                   style: const TextStyle(fontSize: 15),
                 ),
               ),
@@ -123,9 +176,24 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
                   onTap: () async {
-                    generationViewModel.useVoice(generationViewModel.allUrlVoice);
+                    if (isPlaying) {
+                      await audioPlayer.pause();
+                    } else {
+                      await audioPlayer.resume();
+                    }
                   },
-                  child: PlayButton(width: width, height: height)),
+                  child: PlayButton(
+                      width: width,
+                      height: height,
+                      icon: IconButton(
+                          onPressed: () async {
+                            if (isPlaying) {
+                              await audioPlayer.pause();
+                            } else {
+                              await audioPlayer.resume();
+                            }
+                          },
+                          icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: 45, color: Colors.white)))),
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaPlus15)),
             ],
           ),

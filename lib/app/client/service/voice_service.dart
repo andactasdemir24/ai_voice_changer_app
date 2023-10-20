@@ -4,12 +4,12 @@ import 'package:ai_voice_changer_app/app/client/model/response_model.dart';
 import 'package:ai_voice_changer_app/app/client/model/token_model.dart';
 import 'package:http/http.dart' as http;
 
+import '../../constants/global_veriables.dart';
 import '../model/voice_response_model.dart';
 
 class VoiceService {
   final String baseUrl = 'https://api.fakeyou.com/tts/inference';
   final String baseUrlGet = 'https://api.fakeyou.com/tts/job';
-  String allUrl = '';
 
   Future<String> postVoice(TokenModel tokenModel) async {
     final response = await http.post(
@@ -35,8 +35,8 @@ class VoiceService {
           }
         }
       }
-      allUrl = "https://storage.googleapis.com/vocodes-public$path";
-      return allUrl;
+      voiceurl = "https://storage.googleapis.com/vocodes-public$path";
+      return voiceurl;
     } else {
       throw Exception('İstek başarısız oldu. Durum Kodu: ${response.statusCode}');
     }

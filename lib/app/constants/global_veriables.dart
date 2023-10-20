@@ -5,3 +5,4 @@ import 'package:uuid/uuid.dart';
 PersonModel globalPerson = PersonModel(name: 'andac', image: '', token: '');
 TextEditingController controller = TextEditingController();
 Uuid uuid = const Uuid();
+String voiceurl = '';
