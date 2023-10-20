@@ -15,9 +15,6 @@ class CustomListTile extends StatelessWidget {
         text,
         style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
       ),
-      onTap: () {
-        // Tıklandığında yapılacak işlemler
-      },
     );
   }
 }

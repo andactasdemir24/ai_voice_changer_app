@@ -44,37 +44,33 @@ class _GenerateScreenState extends State<GenerateScreen> {
                 child: Text(
                   MyConstants.generateText,
                   style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 17,
-                    fontFamily: 'SF Pro Text',
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.41,
-                  ),
+                      color: Colors.black,
+                      fontSize: 17,
+                      fontFamily: 'SF Pro Text',
+                      fontWeight: FontWeight.w600,
+                      letterSpacing: -0.41),
                 ),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(10),
               child: TextField(
-                controller: controller,
-                maxLines: 5,
-                maxLength: 250,
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
-                  hintText: MyConstants.generatehintText,
-                ),
-              ),
+                  controller: controller,
+                  maxLines: 5,
+                  maxLength: 250,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
+                      hintText: MyConstants.generatehintText)),
             ),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
               child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text("Select AI Voice",
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                    )),
-              ),
+                  alignment: Alignment.centerLeft,
+                  child: Text("Select AI Voice",
+                      style: TextStyle(
+                        fontSize: 17,
+                        fontWeight: FontWeight.w600,
+                      ))),
             ),
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 10),
@@ -84,12 +80,33 @@ class _GenerateScreenState extends State<GenerateScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(
                   onPressed: () async {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const LottieScreen(),
-                        ));
-                    await generationViewModel.fetchVoice();
+                    if (controller.text == '') {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text('Empty Prompt'),
+                            content: const Text('Prompt section should be fill!'),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text('Close'),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    } else {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const LottieScreen(),
+                          ));
+                      await generationViewModel.fetchVoice();
+                    }
+                    controller.clear();
                   },
                   text: MyConstants.generate), //CUSTOMBUTTON
             ),

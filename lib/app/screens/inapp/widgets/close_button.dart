@@ -29,11 +29,7 @@ class ClosedButton extends StatelessWidget {
         child: Center(
           child: IconButton(
               onPressed: () {
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ));
+                Navigator.pop(context);
               },
               icon: const Icon(
                 VoiceIcons.btnClose,

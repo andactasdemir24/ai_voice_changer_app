@@ -1,5 +1,6 @@
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/view/inapp_screen.dart';
 import 'package:ai_voice_changer_app/app/screens/settings/widgets/custom_listtile.dart';
 import 'package:flutter/material.dart';
 
@@ -16,16 +17,20 @@ class SettingsScreen extends StatelessWidget {
                   Navigator.pop(context);
                 },
                 icon: const Icon(Icons.arrow_back_ios_new))),
-        body: const Padding(
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+        body: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
           child: Column(
             children: [
-              CustomListTile(text: MyConstants.settingsText1),
-              CustomListTile(text: MyConstants.settingsText2),
-              CustomListTile(text: MyConstants.settingsText3),
-              CustomListTile(text: MyConstants.settingsText4),
-              CustomListTile(text: MyConstants.settingsText5),
-              CustomListTile(text: MyConstants.settingsText6),
+              GestureDetector(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const InAppScreen()));
+                  },
+                  child: const CustomListTile(text: MyConstants.settingsText1)),
+              const CustomListTile(text: MyConstants.settingsText2),
+              const CustomListTile(text: MyConstants.settingsText3),
+              const CustomListTile(text: MyConstants.settingsText4),
+              const CustomListTile(text: MyConstants.settingsText5),
+              const CustomListTile(text: MyConstants.settingsText6),
             ],
           ),
         ));

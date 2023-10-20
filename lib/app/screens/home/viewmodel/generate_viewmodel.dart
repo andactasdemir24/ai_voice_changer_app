@@ -2,6 +2,7 @@ import 'package:ai_voice_changer_app/app/client/model/token_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:uuid/uuid.dart';
 import '../../../client/service/voice_service.dart';
 import '../../../constants/global_veriables.dart';
 
@@ -12,6 +13,7 @@ class GenerateViewModel with ChangeNotifier {
   bool lottieIsSuccsess = false;
   String allUrlVoice = '';
   final player = AudioPlayer();
+  var uuid = const Uuid();
 
   void holdIndex(int index) {
     globalPerson = persons[index];
@@ -19,15 +21,26 @@ class GenerateViewModel with ChangeNotifier {
   }
 
   Future<void> fetchVoice() async {
+    if (lottieIsSuccsess) {
+      lottieIsSuccsess = false;
+      notifyListeners();
+    }
+
     var tokenmodel = TokenModel(
       tts_model_token: globalPerson.token,
       uuid_idempotency_token: uuid.v4(),
       inference_text: controller.text,
     );
-    var ses = await voiceService.postVoice(tokenmodel);
-    allUrlVoice = ses;
-    lottieIsSuccsess = true;
-    notifyListeners();
+
+    try {
+      var ses = await voiceService.postVoice(tokenmodel);
+      allUrlVoice = ses;
+      lottieIsSuccsess = true;
+    } catch (error) {
+      print("Hata: $error");
+    } finally {
+      notifyListeners();
+    }
   }
 
   Future<void> useVoice(String url) async {
