@@ -40,7 +40,7 @@ class InAppScreen extends StatelessWidget {
               Positioned(
                 bottom: 0,
                 child: Container(
-                  height: 70,
+                  height: MediaQuery.sizeOf(context).height * 0.1,
                   width: MediaQuery.sizeOf(context).width,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(

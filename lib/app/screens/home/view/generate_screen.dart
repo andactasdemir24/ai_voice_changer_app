@@ -4,10 +4,13 @@ import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
 import 'package:ai_voice_changer_app/app/screens/generation/view/lottie_screen.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/view/inapp_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
 
 import '../../../components/custom_button.dart';
+import '../../../core/hive/model/user_data.dart';
 import '../widgets/person_list_container.dart';
 
 class GenerateScreen extends StatelessWidget {
@@ -102,7 +105,35 @@ class GenerateScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => const LottieScreen(),
                               ));
-                          await generationViewModel.fetchVoice();
+                          // Önce kutuyu açın ve veriyi alın
+                          final userBox = await Hive.openBox<UserData>('user_data');
+
+                          if (!userBox.containsKey(0)) {
+                            // Kutu içinde veri yoksa veya boşsa, varsayılan bir UserData nesnesi oluşturun
+                            final userData = UserData(0); // Varsayılan değeri 0 olarak kabul edelim
+                            userBox.put(0, userData);
+                          }
+
+                          UserData? userData = userBox.getAt(0);
+
+                          if (userData != null) {
+                            // userData kullanılabilir
+                            if (userData.buttonPressCount < maxButtonPressCount) {
+                              await generationViewModel.fetchVoice();
+                              userData.buttonPressCount++;
+                              userBox.putAt(0, userData);
+                              // Özelliği kullan
+                              // Burada özelliği kullanabilirsiniz
+                            } else {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const InAppScreen(),
+                                  ));
+                            }
+                          } else {
+                            // Kullanıcı verileri yüklenemedi
+                          }
                         }
                         controller.clear();
                       },

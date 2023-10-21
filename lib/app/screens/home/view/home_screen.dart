@@ -35,9 +35,9 @@ class HomeScreen extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                   letterSpacing: 0.37),
             ),
-            const SizedBox(
-              width: 240,
-              child: Text(MyConstants.startHere2,
+            SizedBox(
+              width: MediaQuery.sizeOf(context).width * 0.6,
+              child: const Text(MyConstants.startHere2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     color: Colors.black,
