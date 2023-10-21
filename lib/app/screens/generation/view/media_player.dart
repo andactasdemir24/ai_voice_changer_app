@@ -2,6 +2,7 @@ import 'package:ai_voice_changer_app/app/client/service/voice_service.dart';
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
+import 'package:ai_voice_changer_app/app/screens/home/view/generate_list.dart';
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import '../../home/model/persons_model.dart';
@@ -84,7 +85,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
           text: MyConstants.appBarText,
           icon: IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GenerateScreenList(),
+                    ));
               },
               icon: const Icon(Icons.arrow_back_ios_new))),
       body: Column(

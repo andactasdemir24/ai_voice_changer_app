@@ -58,7 +58,10 @@ class _GenerateScreenListState extends State<GenerateScreenList> {
               ))
         ],
       ),
-      body: CustomListContainer(height: height, width: width, persons: persons),
+      body: CustomListContainer(
+        height: height,
+        width: width,
+      ),
     );
   }
 }

@@ -1,6 +1,9 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
+import 'package:ai_voice_changer_app/app/core/hive/model/history.dart';
 import 'package:ai_voice_changer_app/app/screens/generation/view/lottie_screen.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
@@ -11,6 +14,7 @@ import 'package:provider/provider.dart';
 
 import '../../../components/custom_button.dart';
 import '../../../core/hive/model/user_data.dart';
+import '../viewmodel/history_viewmodel.dart';
 import '../widgets/person_list_container.dart';
 
 class GenerateScreen extends StatelessWidget {
@@ -21,6 +25,8 @@ class GenerateScreen extends StatelessWidget {
     List<PersonModel> persons = PersonModel.persons;
 
     final generationViewModel = Provider.of<GenerateViewModel>(context);
+    var read = context.read<HistoryViewModel>();
+
     return Scaffold(
         appBar: CustomAppBar(
             text: MyConstants.appBarText,
@@ -105,6 +111,7 @@ class GenerateScreen extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => const LottieScreen(),
                               ));
+
                           // Önce kutuyu açın ve veriyi alın
                           final userBox = await Hive.openBox<UserData>('user_data');
 
@@ -120,10 +127,13 @@ class GenerateScreen extends StatelessWidget {
                             // userData kullanılabilir
                             if (userData.buttonPressCount < maxButtonPressCount) {
                               await generationViewModel.fetchVoice();
+                              read.add(History(
+                                  veri: voiceurl,
+                                  image: globalPerson.image,
+                                  name: globalPerson.name,
+                                  text: controller.text));
                               userData.buttonPressCount++;
                               userBox.putAt(0, userData);
-                              // Özelliği kullan
-                              // Burada özelliği kullanabilirsiniz
                             } else {
                               Navigator.push(
                                   context,

@@ -6,5 +6,5 @@ PersonModel globalPerson = PersonModel(name: 'andac', image: '', token: '');
 TextEditingController controller = TextEditingController();
 Uuid uuid = const Uuid();
 String voiceurl = '';
-int maxButtonPressCount = 3;
+int maxButtonPressCount = 10;
 bool isPremium = false;
