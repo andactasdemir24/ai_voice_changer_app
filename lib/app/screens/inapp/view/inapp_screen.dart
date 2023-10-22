@@ -2,14 +2,35 @@ import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_price_container.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../components/custom_button.dart';
+import '../../home/view/generate_list.dart';
 import '../../home/view/home_screen.dart';
 import '../widgets/close_button.dart';
 import '../widgets/webview_texts.dart';
 
-class InAppScreen extends StatelessWidget {
+class InAppScreen extends StatefulWidget {
   const InAppScreen({super.key});
+
+  @override
+  State<InAppScreen> createState() => _InAppScreenState();
+}
+
+class _InAppScreenState extends State<InAppScreen> {
+  bool isSeen2 = false;
+  Future<void> loadIsSeen2() async {
+    final preferences2 = await SharedPreferences.getInstance();
+    setState(() {
+      isSeen2 = preferences2.getBool('seen2') ?? false;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadIsSeen2();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +102,7 @@ class InAppScreen extends StatelessWidget {
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
+                        builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
                       ));
                 },
                 text: MyConstants.countinue,
