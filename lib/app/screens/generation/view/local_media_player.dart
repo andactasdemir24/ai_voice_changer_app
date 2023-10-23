@@ -9,16 +9,16 @@ import '../../home/model/persons_model.dart';
 import '../widgets/custom_playbutton.dart';
 import '../widgets/custom_share_button.dart';
 
-class MediaPlayerScreen extends StatefulWidget {
-  const MediaPlayerScreen({
+class LocalMediaPlayer extends StatefulWidget {
+  const LocalMediaPlayer({
     super.key,
   });
 
   @override
-  State<MediaPlayerScreen> createState() => _MediaPlayerScreenState();
+  State<LocalMediaPlayer> createState() => _LocalMediaPlayerState();
 }
 
-class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
+class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
   List<PersonModel> persons = PersonModel.persons;
   VoiceService voiceUrl = VoiceService();
   bool isPlaying = false;
@@ -56,7 +56,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
 
   void setAudio() {
     audioPlayer.setReleaseMode(ReleaseMode.stop);
-    audioPlayer.setSourceUrl(voiceurl);
+    audioPlayer.setSourceUrl(history.veri);
   }
 
   @override
@@ -117,7 +117,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             child: Center(
               child: CircleAvatar(
                 radius: 80,
-                backgroundImage: AssetImage(globalPerson.image),
+                backgroundImage: AssetImage(history.image),
                 backgroundColor: const Color(0xffececec),
               ),
             ),
@@ -136,7 +136,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
           ),
           const AspectRatio(aspectRatio: 1000 / 10),
           Text(
-            globalPerson.name,
+            history.name,
             style: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
@@ -181,13 +181,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             children: [
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
-                  onTap: () async {
-                    if (isPlaying) {
-                      await audioPlayer.pause();
-                    } else {
-                      await audioPlayer.resume();
-                    }
-                  },
+                  onTap: () async {},
                   child: PlayButton(
                       width: width,
                       height: height,

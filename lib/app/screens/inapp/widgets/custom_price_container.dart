@@ -1,5 +1,7 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'custom_checkbox.dart';
 import 'custom_checkbox_text.dart';
@@ -12,7 +14,7 @@ class CustomPriceContainer extends StatefulWidget {
 }
 
 class _CustomPriceContainerState extends State<CustomPriceContainer> {
-  bool isPremium = false;
+  //bool isPremium = false;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,12 @@ class _CustomPriceContainerState extends State<CustomPriceContainer> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          isPremium = !isPremium;
+          if (context.read<PremiumViewModel>().getBoxClicked == false) {
+            context.read<PremiumViewModel>().setBoxClicked(true);
+          } else {
+            context.read<PremiumViewModel>().setBoxClicked(false);
+          }
+          //print(widget.isPremium);
         });
       },
       child: Container(
@@ -37,11 +44,9 @@ class _CustomPriceContainerState extends State<CustomPriceContainer> {
         child: Row(
           children: <Widget>[
             CustomCheckbox(
-              value: isPremium,
+              value: context.watch<PremiumViewModel>().getBoxClicked,
               onChanged: (bool newValue) {
-                setState(() {
-                  isPremium = newValue;
-                });
+                context.read<PremiumViewModel>().setBoxClicked(newValue);
               },
             ),
             SizedBox(width: width * 0.02),

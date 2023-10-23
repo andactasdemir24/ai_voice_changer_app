@@ -1,5 +1,6 @@
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/history_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/home_viewmodel.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -21,6 +22,7 @@ Future<void> main() async {
       ChangeNotifierProvider(create: (_) => GenerateViewModel()),
       ChangeNotifierProvider(create: (_) => HistoryViewModel()),
       ChangeNotifierProvider(create: (_) => HomeViewModel()),
+      ChangeNotifierProvider(create: (_) => PremiumViewModel()),
     ],
     child: const MyApp(),
   ));

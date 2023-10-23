@@ -1,7 +1,9 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_price_container.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_texts.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../components/custom_button.dart';
@@ -55,6 +57,13 @@ class _InAppScreenState extends State<InAppScreen> {
                     Image(image: MyConstants.inappfourth)
                   ]),
               ClosedButton(
+                onPressed: () {
+                  Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
+                      ));
+                },
                 width: width * 0.125,
                 height: height * 0.1,
               ),
@@ -98,13 +107,18 @@ class _InAppScreenState extends State<InAppScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
-                      ));
-                },
+                onPressed: !context.watch<PremiumViewModel>().getBoxClicked
+                    ? () {
+                        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Choose a plan")));
+                      }
+                    : () {
+                        context.read<PremiumViewModel>().saveIsPremium();
+                        Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
+                            ));
+                      },
                 text: MyConstants.countinue,
               )),
           const Row(

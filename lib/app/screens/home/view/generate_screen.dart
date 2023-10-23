@@ -8,6 +8,7 @@ import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/home_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/view/inapp_screen.dart';
+import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
@@ -16,16 +17,20 @@ import '../../../core/hive/model/user_data.dart';
 import '../viewmodel/history_viewmodel.dart';
 import '../widgets/person_list_container.dart';
 
-class GenerateScreen extends StatelessWidget {
+class GenerateScreen extends StatefulWidget {
   const GenerateScreen({super.key});
 
+  @override
+  State<GenerateScreen> createState() => _GenerateScreenState();
+}
+
+class _GenerateScreenState extends State<GenerateScreen> {
   @override
   Widget build(BuildContext context) {
     List<PersonModel> persons = PersonModel.persons;
     final generationViewModel = Provider.of<GenerateViewModel>(context);
     final homeViewModel = Provider.of<HomeViewModel>(context);
     var read = context.read<HistoryViewModel>();
-
     return Scaffold(
         appBar: CustomAppBar(
             text: MyConstants.appBarText,
@@ -105,47 +110,56 @@ class GenerateScreen extends StatelessWidget {
                             },
                           );
                         } else {
+                          await context.read<PremiumViewModel>().loadIsPremium();
                           Navigator.push(
                               context,
                               MaterialPageRoute(
                                 builder: (context) => const LottieScreen(),
                               ));
-
-                          // Önce kutuyu açıp veriti alma
-                          final userBox = await Hive.openBox<UserData>('user_data');
-
-                          if (!userBox.containsKey(0)) {
-                            // Kutu içinde veri yoksa veya boşsa, varsayılan bir UserData nesnesi oluşturdum
-                            final userData = UserData(0); // Varsayılan değeri 0 olarak kabul edelim
-                            userBox.put(0, userData);
-                          }
-
-                          UserData? userData = userBox.getAt(0);
-
-                          if (userData != null) {
-                            // userData kullanılabilir
-                            if (userData.buttonPressCount < maxButtonPressCount) {
-                              await generationViewModel.fetchVoice(); //sesi apiden aldığım ve kullandığım fonskiyoon
-                              await homeViewModel
-                                  .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
-                              read.add(History(
-                                  //hive ile oluşturduğum verileri listelediğim yer
-                                  veri: voiceurl,
-                                  image: globalPerson.image,
-                                  name: globalPerson.name,
-                                  text: controller.text));
-
-                              userData.buttonPressCount++;
-                              userBox.putAt(0, userData);
-                            } else {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const InAppScreen(),
-                                  ));
-                            }
+                          if (context.read<PremiumViewModel>().getIsPremium == true) {
+                            await generationViewModel.fetchVoice(); //sesi apiden aldığım ve kullandığım fonskiyoon
+                            await homeViewModel
+                                .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
+                            read.add(History(
+                                //hive ile oluşturduğum verileri listelediğim yer
+                                veri: voiceurl,
+                                image: globalPerson.image,
+                                name: globalPerson.name,
+                                text: controller.text));
                           } else {
-                            // Kullanıcı verileri yüklenemedi
+                            // Önce kutuyu açıp veriti alma
+                            final userBox = await Hive.openBox<UserData>('user_data');
+                            if (!userBox.containsKey(0)) {
+                              // Kutu içinde veri yoksa veya boşsa, varsayılan bir UserData nesnesi oluşturdum
+                              final userData = UserData(0); // Varsayılan değeri 0 olarak kabul edelim
+                              userBox.put(0, userData);
+                            }
+                            UserData? userData = userBox.getAt(0);
+                            if (userData != null) {
+                              // userData kullanılabilir
+                              if (userData.buttonPressCount < maxButtonPressCount) {
+                                await generationViewModel.fetchVoice(); //sesi apiden aldığım ve kullandığım fonskiyoon
+                                await homeViewModel
+                                    .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
+                                read.add(History(
+                                    //hive ile oluşturduğum verileri listelediğim yer
+                                    veri: voiceurl,
+                                    image: globalPerson.image,
+                                    name: globalPerson.name,
+                                    text: controller.text));
+
+                                userData.buttonPressCount++;
+                                userBox.putAt(0, userData);
+                              } else {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const InAppScreen(),
+                                    ));
+                              }
+                            } else {
+                              // Kullanıcı verileri yüklenemedi
+                            }
                           }
                         }
                         controller.clear();

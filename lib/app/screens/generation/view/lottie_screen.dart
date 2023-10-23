@@ -6,18 +6,12 @@ import 'package:provider/provider.dart';
 import '../../home/viewmodel/generate_viewmodel.dart';
 import 'media_player.dart';
 
-class LottieScreen extends StatefulWidget {
+class LottieScreen extends StatelessWidget {
   const LottieScreen({super.key});
 
   @override
-  State<LottieScreen> createState() => _LottieScreenState();
-}
-
-class _LottieScreenState extends State<LottieScreen> {
-  @override
   Widget build(BuildContext context) {
     final generationViewModel = Provider.of<GenerateViewModel>(context);
-
     return generationViewModel.lottieIsSuccsess
         ? const MediaPlayerScreen()
         : Scaffold(
