@@ -10,9 +10,7 @@ import '../widgets/custom_playbutton.dart';
 import '../widgets/custom_share_button.dart';
 
 class LocalMediaPlayer extends StatefulWidget {
-  const LocalMediaPlayer({
-    super.key,
-  });
+  const LocalMediaPlayer({super.key});
 
   @override
   State<LocalMediaPlayer> createState() => _LocalMediaPlayerState();
@@ -23,7 +21,6 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
   VoiceService voiceUrl = VoiceService();
   bool isPlaying = false;
   final audioPlayer = AudioPlayer();
-
   Duration duraiton = Duration.zero;
   Duration position = Duration.zero;
 
@@ -101,17 +98,13 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             height: height * 0.22,
             decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.deepPurpleAccent, boxShadow: [
               BoxShadow(
-                color: Color.fromARGB(255, 232, 118, 255),
-                spreadRadius: 2,
-                blurRadius: 5,
-                offset: Offset(-3, 1),
-              ),
+                  color: Color.fromARGB(255, 232, 118, 255), spreadRadius: 2, blurRadius: 5, offset: Offset(-3, 1)),
               BoxShadow(
-                color: Color.fromARGB(255, 65, 161, 240), // İkinci renk gölgesi
-                spreadRadius: 0,
-                blurRadius: 5,
-                offset: Offset(1, -2), // İkinci renk gölgesinin farklı bir offset değeri
-              ),
+                  color: Color.fromARGB(255, 65, 161, 240), // İkinci renk gölgesi
+                  spreadRadius: 0,
+                  blurRadius: 5,
+                  offset: Offset(1, -2) // İkinci renk gölgesinin farklı bir offset değeri
+                  ),
             ] // Gri arka plan rengi
                 ),
             child: Center(
@@ -127,12 +120,11 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             MyConstants.mediaPlayerText,
             textAlign: TextAlign.center,
             style: TextStyle(
-              color: Color(0xFF1C1C1E),
-              fontSize: 17,
-              fontFamily: 'Poppins',
-              fontWeight: FontWeight.w400,
-              letterSpacing: -0.41,
-            ),
+                color: Color(0xFF1C1C1E),
+                fontSize: 17,
+                fontFamily: 'Poppins',
+                fontWeight: FontWeight.w400,
+                letterSpacing: -0.41),
           ),
           const AspectRatio(aspectRatio: 1000 / 10),
           Text(
@@ -161,17 +153,11 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 25),
-                child: Text(
-                  formatTime(position),
-                  style: const TextStyle(fontSize: 15),
-                ),
+                child: Text(formatTime(position), style: const TextStyle(fontSize: 15)),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 25),
-                child: Text(
-                  formatTime(duraiton - position),
-                  style: const TextStyle(fontSize: 15),
-                ),
+                child: Text(formatTime(duraiton - position), style: const TextStyle(fontSize: 15)),
               ),
             ],
           ),
@@ -181,7 +167,6 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             children: [
               GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
-                  onTap: () async {},
                   child: PlayButton(
                       width: width,
                       height: height,
@@ -198,10 +183,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             ],
           ),
           const AspectRatio(aspectRatio: 60 / 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            child: CustomShareButton(width: width),
-          )
+          Padding(padding: const EdgeInsets.symmetric(horizontal: 20), child: CustomShareButton(width: width))
         ],
       ),
     );

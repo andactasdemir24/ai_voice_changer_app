@@ -18,6 +18,7 @@ class PremiumViewModel with ChangeNotifier {
   Future<void> saveIsPremium() async {
     final preferences = await SharedPreferences.getInstance();
     preferences.setBool('premium', true);
+    notifyListeners();
   }
 
   Future<void> loadIsPremium() async {

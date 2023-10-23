@@ -7,6 +7,5 @@ PersonModel globalPerson = PersonModel(name: '', image: '', token: '');
 TextEditingController controller = TextEditingController();
 Uuid uuid = const Uuid();
 String voiceurl = '';
-int maxButtonPressCount = 3;
-bool isPremium = false;
+int maxButtonPressCount = 5;
 History history = History(veri: '', image: '', name: '', text: '');

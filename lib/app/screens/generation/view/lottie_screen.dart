@@ -22,12 +22,11 @@ class LottieScreen extends StatelessWidget {
                 MyConstants.lottieText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 22,
-                  fontFamily: 'Poppins',
-                  fontWeight: FontWeight.w700,
-                  letterSpacing: 0.35,
-                ),
+                    color: Colors.black,
+                    fontSize: 22,
+                    fontFamily: 'Poppins',
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.35),
               ),
             ),
             body: Column(
@@ -35,21 +34,14 @@ class LottieScreen extends StatelessWidget {
               children: [
                 const Spacer(),
                 Center(
-                  child: Lottie.asset(
-                    MyConstants.lottieImage,
-                    fit: BoxFit.cover,
-                  ),
+                  child: Lottie.asset(MyConstants.lottieImage, fit: BoxFit.cover),
                 ),
                 const Spacer(),
                 const Text(
                   MyConstants.lottieText2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Color(0xFF1C1C1E),
-                    fontSize: 12,
-                    fontFamily: 'Poppins',
-                    fontWeight: FontWeight.w400,
-                  ),
+                      color: Color(0xFF1C1C1E), fontSize: 12, fontFamily: 'Poppins', fontWeight: FontWeight.w400),
                 ),
                 const SizedBox(height: 20),
               ],

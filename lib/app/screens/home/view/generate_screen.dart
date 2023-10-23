@@ -147,7 +147,6 @@ class _GenerateScreenState extends State<GenerateScreen> {
                                     image: globalPerson.image,
                                     name: globalPerson.name,
                                     text: controller.text));
-
                                 userData.buttonPressCount++;
                                 userBox.putAt(0, userData);
                               } else {

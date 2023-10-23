@@ -5,7 +5,6 @@ import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_texts.dart
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../../components/custom_button.dart';
 import '../../home/view/generate_list.dart';
 import '../../home/view/home_screen.dart';
@@ -74,10 +73,9 @@ class _InAppScreenState extends State<InAppScreen> {
                   width: MediaQuery.sizeOf(context).width,
                   decoration: const BoxDecoration(
                     gradient: LinearGradient(
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      colors: [Colors.transparent, Colors.white],
-                    ),
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [Colors.transparent, Colors.white]),
                   ),
                 ),
               )
