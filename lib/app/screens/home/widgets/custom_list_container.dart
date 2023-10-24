@@ -69,7 +69,7 @@ class CustomListContainer extends StatelessWidget {
                                 fontWeight: FontWeight.w600,
                               )),
                           SizedBox(
-                            width: width * 0.5,
+                            width: width * 0.4,
                             child: Text(
                               historyList.text,
                               overflow: TextOverflow.ellipsis,
@@ -81,7 +81,12 @@ class CustomListContainer extends StatelessWidget {
                           )
                         ],
                       ),
-                    )
+                    ),
+                    IconButton(
+                        onPressed: () {
+                          context.read<HistoryViewModel>().delete(index);
+                        },
+                        icon: const Icon(Icons.delete)),
                   ],
                 )),
           ),

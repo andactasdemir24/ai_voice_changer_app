@@ -99,6 +99,9 @@ flutter:
     - family: VoiceIcons
       fonts:
         - asset: assets/icons/VoiceIcons.ttf
+    - family: Poppins
+      fonts:
+        - asset: fonts/Poppins-Regular.ttf
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

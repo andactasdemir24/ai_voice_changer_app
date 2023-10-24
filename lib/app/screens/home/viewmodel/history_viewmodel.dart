@@ -29,4 +29,10 @@ class HistoryViewModel with ChangeNotifier {
     getAll();
     notifyListeners();
   }
+
+  void delete(int index) {
+    historyBox.deleteAt(index);
+    getAll();
+    notifyListeners();
+  }
 }
