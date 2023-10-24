@@ -14,12 +14,9 @@ class CustomPriceContainer extends StatefulWidget {
 }
 
 class _CustomPriceContainerState extends State<CustomPriceContainer> {
-  //bool isPremium = false;
-
   @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-
     return GestureDetector(
       onTap: () {
         setState(() {

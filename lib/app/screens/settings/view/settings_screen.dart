@@ -23,12 +23,13 @@ class SettingsScreen extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
           child: Column(
             children: [
-              if (!context.watch<PremiumViewModel>().getIsPremium) //premium satın aldıysa premium çıkmasın
-                GestureDetector(
-                    onTap: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => const InAppScreen()));
-                    },
-                    child: const CustomListTile(text: MyConstants.settingsText1)),
+              !context.read<PremiumViewModel>().getIsPremium
+                  ? GestureDetector(
+                      onTap: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const InAppScreen()));
+                      },
+                      child: const CustomListTile(text: MyConstants.settingsText1))
+                  : const SizedBox.shrink(),
               const CustomListTile(text: MyConstants.settingsText2),
               const CustomListTile(text: MyConstants.settingsText3),
               const CustomListTile(text: MyConstants.settingsText4),

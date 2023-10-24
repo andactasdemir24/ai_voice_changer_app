@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/widgets/custom_price_container.dart';
@@ -56,16 +58,14 @@ class _InAppScreenState extends State<InAppScreen> {
                     Image(image: MyConstants.inappfourth)
                   ]),
               ClosedButton(
-                onPressed: () {
-                  Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
-                      ));
-                },
-                width: width * 0.125,
-                height: height * 0.1,
-              ),
+                  onPressed: () {
+                    Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen()));
+                  },
+                  width: width * 0.125,
+                  height: height * 0.1),
               Positioned(
                 bottom: 0,
                 child: Container(
@@ -105,35 +105,30 @@ class _InAppScreenState extends State<InAppScreen> {
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: CustomButton(
-                onPressed: !context.watch<PremiumViewModel>().getBoxClicked
+                onPressed: !context.watch<PremiumViewModel>().getBoxClicked //false ise plan seçtir true ise devam et
                     ? () {
                         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Choose a plan")));
                       }
-                    : () {
-                        context.read<PremiumViewModel>().saveIsPremium();
+                    : () async {
+                        context
+                            .read<PremiumViewModel>()
+                            .saveIsPremium()
+                            .whenComplete(() => context.read<PremiumViewModel>().loadIsPremium());
                         Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
-                            ));
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => isSeen2 ? const GenerateScreenList() : const HomeScreen(),
+                          ),
+                        );
                       },
                 text: MyConstants.countinue,
               )),
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              UrlLauncherButton(
-                link: 'https://neonapps.co/',
-                text: MyConstants.privacy,
-              ),
-              UrlLauncherButton(
-                link: 'https://neonapps.co/',
-                text: MyConstants.restore,
-              ),
-              UrlLauncherButton(
-                link: 'https://neonapps.co/',
-                text: MyConstants.terms,
-              ),
+              UrlLauncherButton(link: 'https://neonapps.co/', text: MyConstants.privacy),
+              UrlLauncherButton(link: 'https://neonapps.co/', text: MyConstants.restore),
+              UrlLauncherButton(link: 'https://neonapps.co/', text: MyConstants.terms),
             ],
           )
         ],

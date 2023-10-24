@@ -1,9 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
-
-import 'package:ai_voice_changer_app/app/screens/home/view/home_screen.dart';
-
 import '../../../theme/voice_icons_icons.dart';
 
 class ClosedButton extends StatelessWidget {
@@ -31,13 +28,7 @@ class ClosedButton extends StatelessWidget {
         ),
         child: Center(
           child: IconButton(
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const HomeScreen(),
-                    ));
-              },
+              onPressed: onPressed,
               icon: const Icon(
                 VoiceIcons.btnClose,
                 size: 30,

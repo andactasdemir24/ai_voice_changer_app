@@ -35,34 +35,27 @@ class OnboardingPage extends StatelessWidget {
                       letterSpacing: 0.37)),
             ),
             const AspectRatio(aspectRatio: 50),
-            Text(
-              MyConstants.onboardingTextDesc,
-              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                  fontSize: 20, letterSpacing: -0.38, fontFamily: 'Poppins', fontWeight: FontWeight.w500, height: 1),
-              textAlign: TextAlign.center,
-            ),
+            Text(MyConstants.onboardingTextDesc,
+                style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    fontSize: 20, letterSpacing: -0.38, fontFamily: 'Poppins', fontWeight: FontWeight.w500, height: 1),
+                textAlign: TextAlign.center),
             const AspectRatio(aspectRatio: 600 / 50),
-            Text(
-              MyConstants.onboardingText,
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                  fontWeight: FontWeight.w600, fontSize: 17, letterSpacing: -0.47, fontFamily: 'SF Pro Text'),
-              textAlign: TextAlign.center,
-            ),
+            Text(MyConstants.onboardingText,
+                style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                    fontWeight: FontWeight.w600, fontSize: 17, letterSpacing: -0.47, fontFamily: 'SF Pro Text'),
+                textAlign: TextAlign.center),
             const AspectRatio(aspectRatio: 350 / 50),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: CustomButton(
-                  onPressed: () {
-                    viewModel.saveIsSeen();
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const InAppScreen(),
-                      ),
-                    );
-                  },
-                  text: MyConstants.countinue),
-            )
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: CustomButton(
+                    onPressed: () {
+                      viewModel.saveIsSeen();
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => const InAppScreen()),
+                      );
+                    },
+                    text: MyConstants.countinue))
           ],
         ),
       ),
