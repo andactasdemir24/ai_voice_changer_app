@@ -23,7 +23,6 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
   VoiceService voiceUrl = VoiceService();
   bool isPlaying = false;
   final audioPlayer = AudioPlayer();
-
   Duration duraiton = Duration.zero;
   Duration position = Duration.zero;
 
@@ -179,7 +178,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
+              GestureDetector(
+                  onTap: () {
+                    audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
+                  },
+                  child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
                   onTap: () async {
                     if (isPlaying) {
@@ -200,7 +203,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
                             }
                           },
                           icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: 45, color: Colors.white)))),
-              GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaPlus15)),
+              GestureDetector(
+                  onTap: () {
+                    audioPlayer.seek(Duration(seconds: position.inSeconds + 1));
+                  },
+                  child: const Image(image: MyConstants.mediaPlus15)),
             ],
           ),
           const AspectRatio(aspectRatio: 60 / 10),
