@@ -8,13 +8,13 @@ class PersonModel {
   static List<PersonModel> persons = [
     PersonModel(name: 'Trump', image: 'assets/images/image1.png', token: 'TM:4v0ft4j72y2g'),
     PersonModel(name: 'Obama', image: 'assets/images/image2.png', token: 'TM:58vtv7x9f32c'),
-    PersonModel(name: 'Taylor', image: 'assets/images/image3.png', token: 'TM:karas715w6en'),
-    PersonModel(name: 'Elon', image: 'assets/images/image4.png', token: 'TM:0vckhrxztgcw'),
+    PersonModel(name: 'Morgan', image: 'assets/images/image3.png', token: 'TM:xcx5ytjsv8b3'),
+    PersonModel(name: 'John', image: 'assets/images/image4.png', token: 'TM:fyqkwgdd09ey'),
     PersonModel(name: 'Brady', image: 'assets/images/image5.png', token: 'TM:fnkmhbrznmeh'),
-    PersonModel(name: 'Einstein', image: 'assets/images/image6.png', token: 'TM:knpfewyc2hts'),
-    PersonModel(name: 'Britney', image: 'assets/images/image7.png', token: 'TM:jk8fegwaepfh'),
-    PersonModel(name: 'Johnny', image: 'assets/images/image8.png', token: 'TM:1z2wh784gsb6'),
-    PersonModel(name: 'Donkey', image: 'assets/images/image1.png', token: 'TM:9napv5ew50jv'),
+    PersonModel(name: 'A.Tate', image: 'assets/images/image6.png', token: 'TM:43c7p13p3z5c'),
+    PersonModel(name: 'Merkel', image: 'assets/images/image7.png', token: 'TM:xjarztzt6yp4'),
+    PersonModel(name: 'Hasan', image: 'assets/images/image8.png', token: 'TM:6fyvm0krmx29'),
+    PersonModel(name: 'Barbie', image: 'assets/images/image1.png', token: 'TM:1zj2er3hdwhb'),
     PersonModel(name: '2Pac', image: 'assets/images/image1.png', token: 'TM:jv2j06zg7vh0'),
   ];
 }

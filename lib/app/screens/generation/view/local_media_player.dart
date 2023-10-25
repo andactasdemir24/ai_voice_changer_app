@@ -165,7 +165,11 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaMinus15)),
+              GestureDetector(
+                  onTap: () {
+                    audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
+                  },
+                  child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
                   child: PlayButton(
                       width: width,
@@ -179,7 +183,11 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
                             }
                           },
                           icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: 45, color: Colors.white)))),
-              GestureDetector(onTap: () {}, child: const Image(image: MyConstants.mediaPlus15)),
+              GestureDetector(
+                  onTap: () {
+                    audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
+                  },
+                  child: const Image(image: MyConstants.mediaPlus15)),
             ],
           ),
           const AspectRatio(aspectRatio: 60 / 10),

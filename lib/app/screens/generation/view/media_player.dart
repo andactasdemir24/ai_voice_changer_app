@@ -160,17 +160,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.only(left: 25),
-                child: Text(
-                  formatTime(position),
-                  style: const TextStyle(fontSize: 15),
-                ),
+                child: Text(formatTime(position), style: const TextStyle(fontSize: 15)),
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 25),
-                child: Text(
-                  formatTime(duraiton - position),
-                  style: const TextStyle(fontSize: 15),
-                ),
+                child: Text(formatTime(duraiton - position), style: const TextStyle(fontSize: 15)),
               ),
             ],
           ),
