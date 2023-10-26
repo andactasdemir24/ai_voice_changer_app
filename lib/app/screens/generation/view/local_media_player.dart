@@ -168,9 +168,17 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
               GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
+                    setState(() {});
                   },
                   child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
+                  onTap: () async {
+                    if (isPlaying) {
+                      await audioPlayer.pause();
+                    } else {
+                      await audioPlayer.resume();
+                    }
+                  },
                   child: PlayButton(
                       width: width,
                       height: height,
@@ -186,6 +194,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
               GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
+                    setState(() {});
                   },
                   child: const Image(image: MyConstants.mediaPlus15)),
             ],

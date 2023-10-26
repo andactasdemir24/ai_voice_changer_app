@@ -37,6 +37,11 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
         });
       }
     });
+    audioPlayer.onPlayerComplete.listen((event) {
+      setState(() {
+        position = Duration.zero; // Ses tamamlandığında slider'ı başa sıfırla
+      });
+    });
     audioPlayer.onDurationChanged.listen((newDuration) {
       if (mounted) {
         setState(() {
@@ -150,7 +155,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
             max: duraiton.inSeconds.toDouble(),
             value: position.inSeconds.toDouble(),
             onChanged: (value) async {
-              final position = Duration(seconds: value.toInt());
+              final position = Duration(seconds: value.round());
               await audioPlayer.seek(position);
               await audioPlayer.resume();
             },

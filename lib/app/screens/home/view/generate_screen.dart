@@ -117,7 +117,9 @@ class _GenerateScreenState extends State<GenerateScreen> {
                                 builder: (context) => const LottieScreen(),
                               ));
                           if (context.read<PremiumViewModel>().getIsPremium == true) {
-                            await generationViewModel.fetchVoice(); //sesi apiden aldığım ve kullandığım fonskiyoon
+                            await generationViewModel.fetchVoice().catchError((error) {
+                              Navigator.pop(context);
+                            }); //sesi apiden aldığım ve kullandığım fonskiyoon
                             await homeViewModel
                                 .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
                             read.add(History(
@@ -138,7 +140,9 @@ class _GenerateScreenState extends State<GenerateScreen> {
                             if (userData != null) {
                               // userData kullanılabilir
                               if (userData.buttonPressCount < maxButtonPressCount) {
-                                await generationViewModel.fetchVoice(); //sesi apiden aldığım ve kullandığım fonskiyoon
+                                await generationViewModel.fetchVoice().catchError((error) {
+                                  Navigator.pop(context);
+                                }); //sesi apiden aldığım ve kullandığım fonskiyoon
                                 await homeViewModel
                                     .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
                                 read.add(History(

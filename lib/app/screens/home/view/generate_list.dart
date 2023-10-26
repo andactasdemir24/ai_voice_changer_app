@@ -1,4 +1,6 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
+import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:ai_voice_changer_app/app/screens/settings/view/settings_screen.dart';
 import 'package:ai_voice_changer_app/app/theme/voice_icons_icons.dart';
 import 'package:flutter/material.dart';
@@ -36,6 +38,7 @@ class GenerateScreenList extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 15),
               child: IconButton(
                 onPressed: () {
+                  globalPerson = PersonModel(token: '', name: '', image: '');
                   Navigator.push(
                       context,
                       MaterialPageRoute(

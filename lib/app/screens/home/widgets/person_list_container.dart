@@ -39,7 +39,7 @@ class PersonsWidget extends StatelessWidget {
                   ),
                   child: Center(
                     child: CircleAvatar(
-                      radius: 35,
+                      radius: 34,
                       backgroundImage: AssetImage(persons[index].image),
                       backgroundColor: const Color(0xffececec),
                     ),
