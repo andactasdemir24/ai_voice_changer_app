@@ -68,7 +68,7 @@ class _GenerateScreenState extends State<GenerateScreen> {
                   child: TextField(
                       controller: controller,
                       maxLines: 5,
-                      maxLength: 250,
+                      maxLength: 180,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
                           hintText: MyConstants.generatehintText)),
