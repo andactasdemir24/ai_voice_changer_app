@@ -1,4 +1,4 @@
-import 'package:ai_voice_changer_app/app/client/service/voice_service.dart';
+import 'package:ai_voice_changer_app/app/data/service/voice_service.dart';
 import 'package:ai_voice_changer_app/app/components/custom_appbar.dart';
 import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';

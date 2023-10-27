@@ -1,7 +1,7 @@
-import 'package:ai_voice_changer_app/app/client/model/token_model.dart';
+import 'package:ai_voice_changer_app/app/data/model/token_model.dart';
 import 'package:ai_voice_changer_app/app/screens/home/model/persons_model.dart';
 import 'package:flutter/material.dart';
-import '../../../client/service/voice_service.dart';
+import '../../../data/service/voice_service.dart';
 import '../../../constants/global_veriables.dart';
 
 class GenerateViewModel with ChangeNotifier {
