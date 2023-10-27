@@ -18,7 +18,7 @@ class _LinearIndicatorState extends State<LinearIndicator> {
 
   void determinateIndicator() {
     Timer.periodic(
-      const Duration(milliseconds: 100),
+      const Duration(milliseconds: 150),
       (Timer timer) {
         if (value > 0.9) {
           timer.cancel();

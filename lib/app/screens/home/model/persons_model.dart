@@ -12,7 +12,7 @@ class PersonModel {
     PersonModel(name: 'John', image: 'assets/images/image4.png', token: 'TM:fyqkwgdd09ey'),
     PersonModel(name: 'Brady', image: 'assets/images/image5.png', token: 'TM:fnkmhbrznmeh'),
     PersonModel(name: 'A.Tate', image: 'assets/images/image6.png', token: 'TM:43c7p13p3z5c'),
-    PersonModel(name: 'Merkel', image: 'assets/images/image7.png', token: 'TM:xjarztzt6yp4'),
+    PersonModel(name: 'Zendaya', image: 'assets/images/image7.png', token: 'TM:f5hcw922p29b'),
     PersonModel(name: 'Eminem', image: 'assets/images/image8.png', token: 'TM:pdf9c1anbdjq'),
     PersonModel(name: 'Barbie', image: 'assets/images/image1.png', token: 'TM:1zj2er3hdwhb'),
     PersonModel(name: '2Pac', image: 'assets/images/image1.png', token: 'TM:jv2j06zg7vh0'),

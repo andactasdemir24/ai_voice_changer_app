@@ -17,14 +17,9 @@ import '../../../core/hive/model/user_data.dart';
 import '../viewmodel/history_viewmodel.dart';
 import '../widgets/person_list_container.dart';
 
-class GenerateScreen extends StatefulWidget {
+class GenerateScreen extends StatelessWidget {
   const GenerateScreen({super.key});
 
-  @override
-  State<GenerateScreen> createState() => _GenerateScreenState();
-}
-
-class _GenerateScreenState extends State<GenerateScreen> {
   @override
   Widget build(BuildContext context) {
     List<PersonModel> persons = PersonModel.persons;

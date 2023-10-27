@@ -20,7 +20,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
   List<PersonModel> persons = PersonModel.persons;
   VoiceService voiceUrl = VoiceService();
   bool isPlaying = false;
-  final audioPlayer = AudioPlayer();
+  AudioPlayer audioPlayer = AudioPlayer();
   Duration duraiton = Duration.zero;
   Duration position = Duration.zero;
 
@@ -34,6 +34,11 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
           isPlaying = state == PlayerState.playing;
         });
       }
+    });
+    audioPlayer.onPlayerComplete.listen((event) {
+      setState(() {
+        position = Duration.zero; // Ses tamamlandığında slider'ı başa sıfırla
+      });
     });
     audioPlayer.onDurationChanged.listen((newDuration) {
       if (mounted) {
@@ -98,13 +103,17 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             height: height * 0.22,
             decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.deepPurpleAccent, boxShadow: [
               BoxShadow(
-                  color: Color.fromARGB(255, 232, 118, 255), spreadRadius: 2, blurRadius: 5, offset: Offset(-3, 1)),
+                color: Color.fromARGB(255, 232, 118, 255),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: Offset(-3, 1),
+              ),
               BoxShadow(
                   color: Color.fromARGB(255, 65, 161, 240), // İkinci renk gölgesi
                   spreadRadius: 0,
                   blurRadius: 5,
                   offset: Offset(1, -2) // İkinci renk gölgesinin farklı bir offset değeri
-                  ),
+                  )
             ] // Gri arka plan rengi
                 ),
             child: Center(
@@ -116,23 +125,18 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             ),
           ),
           const AspectRatio(aspectRatio: 100 / 10),
-          const Text(
-            MyConstants.mediaPlayerText,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Color(0xFF1C1C1E),
-                fontSize: 17,
-                fontFamily: 'Poppins',
-                fontWeight: FontWeight.w400,
-                letterSpacing: -0.41),
-          ),
+          const Text(MyConstants.mediaPlayerText,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xFF1C1C1E),
+                  fontSize: 17,
+                  fontFamily: 'Poppins',
+                  fontWeight: FontWeight.w400,
+                  letterSpacing: -0.41)),
           const AspectRatio(aspectRatio: 1000 / 10),
           Text(
             history.name,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.bold,
-            ),
+            style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold), //hivedeki ismi yazdırdım
           ),
           const AspectRatio(aspectRatio: 100 / 10),
           Slider(
@@ -143,7 +147,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
             max: duraiton.inSeconds.toDouble(),
             value: position.inSeconds.toDouble(),
             onChanged: (value) async {
-              final position = Duration(seconds: value.toInt());
+              final position = Duration(seconds: value.round());
               await audioPlayer.seek(position);
               await audioPlayer.resume();
             },
@@ -168,7 +172,6 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
               GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
-                    setState(() {});
                   },
                   child: const Image(image: MyConstants.mediaMinus15)),
               GestureDetector(
@@ -194,7 +197,6 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
               GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds - 1));
-                    setState(() {});
                   },
                   child: const Image(image: MyConstants.mediaPlus15)),
             ],
