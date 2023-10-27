@@ -3,6 +3,7 @@ import 'package:ai_voice_changer_app/app/screens/home/viewmodel/generate_viewmod
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../../constants/const.dart';
 import '../model/persons_model.dart';
 
 class PersonsWidget extends StatelessWidget {
@@ -35,7 +36,8 @@ class PersonsWidget extends StatelessWidget {
                   height: height * 0.1,
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
-                    color: globalPerson == persons[index] ? Colors.purple : Colors.grey, // Gri arka plan rengi
+                    color:
+                        globalPerson == persons[index] ? MyConstants.purple : MyConstants.grey, // Gri arka plan rengi
                   ),
                   child: Center(
                     child: CircleAvatar(

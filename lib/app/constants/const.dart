@@ -46,4 +46,12 @@ class MyConstants {
   static const String alertTitle = "Empty Prompt";
   static const String alertContent = "Prompt section should be fill!";
   static const String alertClose = "Close";
+
+  static const Color black = Colors.black;
+  static const Color deepPurple = Colors.deepPurple;
+  static const Color deepPurpleAccent = Colors.deepPurpleAccent;
+  static const Color white = Colors.white;
+  static const Color transparent = Colors.transparent;
+  static const Color grey = Colors.grey;
+  static const Color purple = Colors.purple;
 }

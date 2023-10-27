@@ -1,3 +1,4 @@
+import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/history_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/home/viewmodel/home_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'AI Voice Changer',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: MyConstants.deepPurple),
         useMaterial3: true,
       ),
       home: const MainView(),

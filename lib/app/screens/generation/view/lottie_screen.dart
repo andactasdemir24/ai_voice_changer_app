@@ -22,7 +22,7 @@ class LottieScreen extends StatelessWidget {
                 MyConstants.lottieText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                    color: Colors.black,
+                    color: MyConstants.black,
                     fontSize: 22,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w700,

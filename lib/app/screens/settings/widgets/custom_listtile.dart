@@ -1,6 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
+import '../../../constants/const.dart';
+
 class CustomListTile extends StatelessWidget {
   final String text;
   const CustomListTile({
@@ -13,7 +15,7 @@ class CustomListTile extends StatelessWidget {
     return ListTile(
       title: Text(
         text,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: Colors.black),
+        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: MyConstants.black),
       ),
     );
   }

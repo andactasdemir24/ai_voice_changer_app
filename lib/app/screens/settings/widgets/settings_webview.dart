@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:flutter/material.dart';
 
 import 'package:ai_voice_changer_app/app/screens/inapp/view/webview.dart';
@@ -37,7 +38,7 @@ class _SettingsWebviewState extends State<SettingsWebview> {
             widget.text,
             style: const TextStyle(
               fontSize: 20,
-              color: Colors.black,
+              color: MyConstants.black,
               fontWeight: FontWeight.w500,
             ),
           ),

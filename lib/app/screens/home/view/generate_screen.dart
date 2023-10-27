@@ -50,7 +50,7 @@ class GenerateScreen extends StatelessWidget {
                     child: Text(
                       MyConstants.generateText,
                       style: TextStyle(
-                          color: Colors.black,
+                          color: MyConstants.black,
                           fontSize: 17,
                           fontFamily: 'SF Pro Text',
                           fontWeight: FontWeight.w600,

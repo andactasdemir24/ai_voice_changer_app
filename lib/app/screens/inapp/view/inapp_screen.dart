@@ -75,7 +75,7 @@ class _InAppScreenState extends State<InAppScreen> {
                     gradient: LinearGradient(
                         begin: Alignment.topCenter,
                         end: Alignment.bottomCenter,
-                        colors: [Colors.transparent, Colors.white]),
+                        colors: [MyConstants.transparent, MyConstants.white]),
                   ),
                 ),
               )
@@ -84,7 +84,7 @@ class _InAppScreenState extends State<InAppScreen> {
           SizedBox(height: height * 0.05),
           const Text(MyConstants.inappTrypremium,
               style: TextStyle(
-                  color: Colors.black,
+                  color: MyConstants.black,
                   fontSize: 34,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w700,

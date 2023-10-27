@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
+import '../../../constants/const.dart';
 import '../../../theme/voice_icons_icons.dart';
 
 class ClosedButton extends StatelessWidget {
@@ -24,7 +25,7 @@ class ClosedButton extends StatelessWidget {
         height: height,
         decoration: BoxDecoration(
           shape: BoxShape.circle, // Yuvarlak şekil
-          color: Colors.grey.withOpacity(0.6), // Dairesel arka plan rengi
+          color: MyConstants.grey.withOpacity(0.6), // Dairesel arka plan rengi
         ),
         child: Center(
           child: IconButton(
@@ -32,7 +33,7 @@ class ClosedButton extends StatelessWidget {
               icon: const Icon(
                 VoiceIcons.btnClose,
                 size: 30,
-                color: Colors.white,
+                color: MyConstants.white,
               )),
         ),
       ),

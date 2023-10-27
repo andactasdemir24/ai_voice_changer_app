@@ -2,6 +2,7 @@ import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
 import 'package:ai_voice_changer_app/app/screens/generation/view/local_media_player.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../../constants/const.dart';
 import '../viewmodel/history_viewmodel.dart';
 
 class CustomListContainer extends StatelessWidget {
@@ -42,7 +43,7 @@ class CustomListContainer extends StatelessWidget {
                       width: width * 0.3,
                       decoration: const BoxDecoration(
                         shape: BoxShape.circle,
-                        color: Colors.deepPurpleAccent, // Gri arka plan rengi
+                        color: MyConstants.deepPurpleAccent, // Gri arka plan rengi
                       ),
                       child: Center(
                           child: CircleAvatar(

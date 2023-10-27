@@ -48,7 +48,7 @@ class GenerateScreenList extends StatelessWidget {
                 icon: const Icon(
                   Icons.add,
                   size: 35,
-                  color: Colors.black,
+                  color: MyConstants.black,
                 ),
               ))
         ],

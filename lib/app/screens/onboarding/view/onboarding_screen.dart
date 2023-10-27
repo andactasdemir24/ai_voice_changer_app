@@ -27,7 +27,7 @@ class OnboardingPage extends StatelessWidget {
               child: Text(MyConstants.onboardingTextBold,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: Colors.black,
+                      color: MyConstants.black,
                       fontSize: 34,
                       fontFamily: 'Poppins',
                       fontWeight: FontWeight.w700,

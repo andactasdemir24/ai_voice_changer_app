@@ -101,7 +101,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
           const AspectRatio(aspectRatio: 100 / 10),
           Container(
             height: height * 0.22,
-            decoration: const BoxDecoration(shape: BoxShape.circle, color: Colors.deepPurpleAccent, boxShadow: [
+            decoration: const BoxDecoration(shape: BoxShape.circle, color: MyConstants.deepPurpleAccent, boxShadow: [
               BoxShadow(
                 color: Color.fromARGB(255, 232, 118, 255),
                 spreadRadius: 2,
@@ -140,9 +140,9 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
           ),
           const AspectRatio(aspectRatio: 100 / 10),
           Slider(
-            thumbColor: Colors.white,
-            activeColor: Colors.deepPurpleAccent,
-            inactiveColor: Colors.grey,
+            thumbColor: MyConstants.white,
+            activeColor: MyConstants.deepPurpleAccent,
+            inactiveColor: MyConstants.grey,
             min: 0,
             max: duraiton.inSeconds.toDouble(),
             value: position.inSeconds.toDouble(),
@@ -193,7 +193,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
                               await audioPlayer.resume();
                             }
                           },
-                          icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: 45, color: Colors.white)))),
+                          icon: Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: 45, color: MyConstants.white)))),
               GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds - 1));

@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -22,8 +23,8 @@ class CustomButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.transparent,
-          shadowColor: Colors.transparent,
+          backgroundColor: MyConstants.transparent,
+          shadowColor: MyConstants.transparent,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(150),
           ),
@@ -32,7 +33,7 @@ class CustomButton extends StatelessWidget {
           text,
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: Colors.white.withOpacity(0.5),
+            color: MyConstants.white.withOpacity(0.5),
             fontSize: 17,
             fontWeight: FontWeight.w300,
             height: 0.08,

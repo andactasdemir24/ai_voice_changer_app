@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:ai_voice_changer_app/app/constants/const.dart';
 import 'package:flutter/material.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
@@ -18,7 +19,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         text,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          color: Colors.black,
+          color: MyConstants.black,
           fontSize: 22,
           fontFamily: 'Poppins',
           fontWeight: FontWeight.w700,

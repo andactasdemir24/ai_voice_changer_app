@@ -29,7 +29,7 @@ class HomeScreen extends StatelessWidget {
             const Text(
               MyConstants.startHere,
               style: TextStyle(
-                  color: Colors.black,
+                  color: MyConstants.black,
                   fontSize: 34,
                   fontFamily: 'Poppins',
                   fontWeight: FontWeight.w700,
@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
               child: const Text(MyConstants.startHere2,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    color: Colors.black,
+                    color: MyConstants.black,
                     fontSize: 17,
                     fontFamily: 'Poppins',
                     fontWeight: FontWeight.w400,

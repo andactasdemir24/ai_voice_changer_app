@@ -19,7 +19,7 @@ class CustomText extends StatelessWidget {
           Text(
             text,
             style: const TextStyle(
-              color: Colors.black,
+              color: MyConstants.black,
               fontSize: 17,
               fontFamily: 'Poppins',
               fontWeight: FontWeight.w400,
