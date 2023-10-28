@@ -21,8 +21,8 @@ class _LinearIndicatorState extends State<LinearIndicator> {
       const Duration(milliseconds: 150),
       (Timer timer) {
         if (value > 0.9) {
-          timer.cancel();
           navigateToAnotherPage();
+          timer.cancel();
         } else {
           if (mounted) {
             setState(() {
