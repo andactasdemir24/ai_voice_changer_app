@@ -4,7 +4,9 @@ import 'package:ai_voice_changer_app/app/screens/inapp/view/inapp_screen.dart';
 import 'package:ai_voice_changer_app/app/screens/inapp/viewmodel/premium_viewmodel.dart';
 import 'package:ai_voice_changer_app/app/screens/settings/widgets/custom_listtile.dart';
 import 'package:flutter/material.dart';
+import 'package:hive/hive.dart';
 import 'package:provider/provider.dart';
+import '../../../core/hive/model/user_data.dart';
 import '../widgets/settings_webview.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -41,10 +43,34 @@ class SettingsScreen extends StatelessWidget {
             const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText4),
             const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText5),
             const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText6),
+            !context.read<PremiumViewModel>().getIsPremium
+                ? FutureBuilder<UserData?>(
+                    future: _getUserData(context),
+                    builder: (context, snapshot) {
+                      if (snapshot.connectionState == ConnectionState.done) {
+                        if (snapshot.hasData) {
+                          return CustomListTile(text: 'Free right: ${snapshot.data!.buttonPressCount}/5');
+                        } else {
+                          return const SizedBox.shrink();
+                        }
+                      } else {
+                        return const CircularProgressIndicator();
+                      }
+                    },
+                  )
+                : const SizedBox.shrink(),
           ],
         ),
       ),
     );
+  }
+
+  Future<UserData?> _getUserData(BuildContext context) async {
+    final userBox = await Hive.openBox<UserData>('user_data');
+    if (userBox.isEmpty) {
+      return null;
+    }
+    return userBox.getAt(0);
   }
 }
 
