@@ -189,30 +189,30 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
                   },
                   child: const Image(image: MyConstants.mediaMinus15),
                 ),
-                GestureDetector(
-                  onTap: () async {
-                    if (isPlaying) {
-                      await audioPlayer.pause();
-                    } else {
-                      await audioPlayer.resume();
-                    }
-                  },
-                  child: PlayButton(
-                    width: width,
-                    height: height,
-                    icon: IconButton(
-                      onPressed: () async {
-                        if (isPlaying) {
-                          await audioPlayer.pause();
-                        } else {
-                          await audioPlayer.resume();
-                        }
-                      },
-                      icon:
-                          Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: width * 0.1, color: MyConstants.white),
-                    ),
-                  ),
-                ),
+                // GestureDetector(
+                //   onTap: () async {
+                //     if (isPlaying) {
+                //       await audioPlayer.pause();
+                //     } else {
+                //       await audioPlayer.resume();
+                //     }
+                //   },
+                //   child: PlayButton(
+                //     width: width,
+                //     height: height,
+                //     icon: IconButton(
+                //       onPressed: () async {
+                //         if (isPlaying) {
+                //           await audioPlayer.pause();
+                //         } else {
+                //           await audioPlayer.resume();
+                //         }
+                //       },
+                //       icon:
+                //           Icon(isPlaying ? Icons.pause : Icons.play_arrow, size: width * 0.1, color: MyConstants.white),
+                //     ),
+                //   ),
+                // ),
                 GestureDetector(
                   onTap: () {
                     audioPlayer.seek(Duration(seconds: position.inSeconds + 1));

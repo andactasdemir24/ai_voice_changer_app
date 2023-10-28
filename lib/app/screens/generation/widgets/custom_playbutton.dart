@@ -3,17 +3,17 @@ import 'package:flutter/material.dart';
 class PlayButton extends StatelessWidget {
   const PlayButton({
     Key? key,
-    required this.width,
-    required this.height,
+    required this.onPressed,
     required this.icon,
   }) : super(key: key);
 
-  final double width;
-  final double height;
-  final IconButton icon;
+  final Function() onPressed;
+  final Icon icon;
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return Container(
       width: width * 0.2,
       height: height * 0.1,
@@ -33,7 +33,7 @@ class PlayButton extends StatelessWidget {
           ),
         ],
       ),
-      child: Center(child: icon),
+      child: Center(child: IconButton(onPressed: onPressed, icon: icon)),
     );
   }
 }

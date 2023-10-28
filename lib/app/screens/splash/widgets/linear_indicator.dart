@@ -69,7 +69,7 @@ class _LinearIndicatorState extends State<LinearIndicator> {
             width: width * 0.3,
             height: 3,
             child: LinearProgressIndicator(
-              backgroundColor: MyConstants.linearIndicatorColor,
+              backgroundColor: MyConstants.white,
               color: MyConstants.deepPurpleAccent,
               minHeight: 5,
               value: value,
