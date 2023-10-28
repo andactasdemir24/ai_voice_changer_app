@@ -4,33 +4,36 @@ class CustomCheckbox extends StatelessWidget {
   final bool value;
   final ValueChanged<bool> onChanged;
 
-  const CustomCheckbox({super.key, required this.value, required this.onChanged});
+  const CustomCheckbox({Key? key, required this.value, required this.onChanged}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.sizeOf(context).width;
-    var height = MediaQuery.sizeOf(context).height;
+    double width = MediaQuery.of(context).size.width;
+    double checkboxSize = width * 0.06;
+    double borderWidth = width * 0.005;
+    double iconSize = checkboxSize * 0.7;
+
     return GestureDetector(
       onTap: () {
         onChanged(!value);
       },
       child: Container(
-        width: width * 0.06,
-        height: height * 0.03,
+        width: checkboxSize,
+        height: checkboxSize * 1,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: width * 0.005, color: const Color(0xFF4E55FF)),
+            side: BorderSide(width: borderWidth, color: const Color(0xFF4E55FF)),
             borderRadius: BorderRadius.circular(30),
           ),
         ),
         child: Center(
           child: value
-              ? const Icon(
+              ? Icon(
                   Icons.circle,
-                  size: 16.0,
-                  color: Color(0xFF4E55FF),
+                  size: iconSize,
+                  color: const Color(0xFF4E55FF),
                 )
-              : Container(), // İşaretli ise onay işareti, değilse boş container
+              : Container(),
         ),
       ),
     );

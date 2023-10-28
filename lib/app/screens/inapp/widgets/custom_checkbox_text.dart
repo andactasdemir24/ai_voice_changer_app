@@ -11,12 +11,14 @@ class CheckBoxText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double fontSize = MediaQuery.of(context).size.shortestSide * 0.04;
+
     return Text(
       text,
       textAlign: TextAlign.center,
-      style: const TextStyle(
+      style: TextStyle(
         color: MyConstants.black,
-        fontSize: 17,
+        fontSize: fontSize,
         fontFamily: 'SF Pro Text',
         fontWeight: FontWeight.w600,
         height: 0.08,

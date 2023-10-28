@@ -26,70 +26,78 @@ class CustomListContainer extends StatelessWidget {
           onTap: () {
             history = historyList;
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LocalMediaPlayer(),
-                ));
+              context,
+              MaterialPageRoute(
+                builder: (context) => const LocalMediaPlayer(),
+              ),
+            );
           },
           child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+            padding: EdgeInsets.symmetric(vertical: height * 0.01, horizontal: width * 0.05),
             child: Container(
-                height: height * 0.15,
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: const Color(0xffececec)),
-                child: Row(
-                  children: [
-                    Container(
-                      height: height * 0.11,
-                      width: width * 0.3,
-                      decoration: const BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: MyConstants.deepPurpleAccent, // Gri arka plan rengi
-                      ),
-                      child: Center(
-                          child: CircleAvatar(
-                        radius: 37,
+              height: height * 0.155,
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: const Color(0xffececec)),
+              child: Row(
+                children: [
+                  Container(
+                    height: height * 0.1,
+                    width: width * 0.3,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: MyConstants.deepPurpleAccent,
+                    ),
+                    child: Center(
+                      child: CircleAvatar(
+                        radius: width * 0.09,
                         backgroundImage: AssetImage(historyList.image),
-                        backgroundColor: const Color(0xffececec), // Varsa arka plan rengi
-                        // Child boş olmalıdır
-                        // fit: BoxFit.cover, // Resmi tam olarak doldurur
-                      )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 10),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("00${index + 1} Generation",
-                              style: const TextStyle(
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500,
-                              )),
-                          Text(historyList.name,
-                              style: const TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w600,
-                              )),
-                          SizedBox(
-                            width: width * 0.4,
-                            child: Text(
-                              historyList.text,
-                              overflow: TextOverflow.ellipsis,
-                              style: const TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                              ),
-                            ),
-                          )
-                        ],
+                        backgroundColor: const Color(0xffececec),
                       ),
                     ),
-                    IconButton(
-                        onPressed: () {
-                          context.read<HistoryViewModel>().delete(index);
-                        },
-                        icon: const Icon(Icons.delete)),
-                  ],
-                )),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: height * 0.025, horizontal: width * 0.025),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "00${index + 1} Generation",
+                          style: TextStyle(
+                            fontSize: width * 0.035,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(height: 5),
+                        Text(
+                          historyList.name,
+                          style: TextStyle(
+                            fontSize: width * 0.025,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          width: width * 0.4,
+                          child: Text(
+                            historyList.text,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: width * 0.03,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  IconButton(
+                    onPressed: () {
+                      context.read<HistoryViewModel>().delete(index);
+                    },
+                    icon: const Icon(Icons.delete),
+                  ),
+                ],
+              ),
+            ),
           ),
         );
       },

@@ -1,40 +1,36 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-// ignore_for_file: must_be_immutable
 import 'package:flutter/material.dart';
 import '../../../constants/const.dart';
 import '../../../theme/voice_icons_icons.dart';
 
 class ClosedButton extends StatelessWidget {
-  double? width;
-  double? height;
   final Function() onPressed;
-  ClosedButton({
-    Key? key,
-    this.width,
-    this.height,
-    required this.onPressed,
-  }) : super(key: key);
+
+  const ClosedButton({Key? key, required this.onPressed}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double iconSize = MediaQuery.of(context).size.shortestSide * 0.05;
+    double containerSize = iconSize * 2.6;
+
     return Positioned(
-      top: 20,
+      top: 50,
       right: 20,
       child: Container(
-        width: width,
-        height: height,
+        width: containerSize,
+        height: containerSize,
         decoration: BoxDecoration(
-          shape: BoxShape.circle, // Yuvarlak şekil
-          color: MyConstants.grey.withOpacity(0.6), // Dairesel arka plan rengi
+          shape: BoxShape.circle,
+          color: MyConstants.grey.withOpacity(0.8),
         ),
         child: Center(
           child: IconButton(
-              onPressed: onPressed,
-              icon: const Icon(
-                VoiceIcons.btnClose,
-                size: 30,
-                color: MyConstants.white,
-              )),
+            onPressed: onPressed,
+            icon: Icon(
+              VoiceIcons.btnClose,
+              size: iconSize * 1.7,
+              color: MyConstants.white,
+            ),
+          ),
         ),
       ),
     );

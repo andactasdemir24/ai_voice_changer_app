@@ -20,24 +20,27 @@ class SettingsWebview extends StatefulWidget {
 class _SettingsWebviewState extends State<SettingsWebview> {
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return TextButton(
       onPressed: () async {
         Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => WebView(
-                link: widget.link,
-              ),
-            ));
+          context,
+          MaterialPageRoute(
+            builder: (context) => WebView(
+              link: widget.link,
+            ),
+          ),
+        );
       },
       child: Padding(
-        padding: const EdgeInsets.only(left: 4),
+        padding: EdgeInsets.only(left: width * 0.015),
         child: Align(
           alignment: Alignment.centerLeft,
           child: Text(
             widget.text,
-            style: const TextStyle(
-              fontSize: 20,
+            style: TextStyle(
+              fontSize: width * 0.06, // Adjust the multiplier as needed
               color: MyConstants.black,
               fontWeight: FontWeight.w500,
             ),

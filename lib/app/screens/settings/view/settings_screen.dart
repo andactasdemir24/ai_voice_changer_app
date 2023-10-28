@@ -12,33 +12,39 @@ class SettingsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return Scaffold(
-        appBar: CustomAppBar(
-            text: MyConstants.settingsText,
-            icon: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(Icons.arrow_back_ios_new))),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-          child: Column(
-            children: [
-              !context.read<PremiumViewModel>().getIsPremium
-                  ? GestureDetector(
-                      onTap: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) => const InAppScreen()));
-                      },
-                      child: const CustomListTile(text: MyConstants.settingsText1))
-                  : const SizedBox.shrink(),
-              const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText2),
-              const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText3),
-              const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText4),
-              const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText5),
-              const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText6),
-            ],
-          ),
-        ));
+      appBar: CustomAppBar(
+        text: MyConstants.settingsText,
+        icon: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: const Icon(Icons.arrow_back_ios_new),
+        ),
+      ),
+      body: Padding(
+        padding: EdgeInsets.symmetric(vertical: 10, horizontal: width * 0.1),
+        child: Column(
+          children: [
+            !context.read<PremiumViewModel>().getIsPremium
+                ? GestureDetector(
+                    onTap: () {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const InAppScreen()));
+                    },
+                    child: const CustomListTile(text: MyConstants.settingsText1),
+                  )
+                : const SizedBox.shrink(),
+            const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText2),
+            const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText3),
+            const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText4),
+            const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText5),
+            const SettingsWebview(link: 'https://neonapps.co/', text: MyConstants.settingsText6),
+          ],
+        ),
+      ),
+    );
   }
 }
 

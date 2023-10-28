@@ -16,7 +16,10 @@ class CustomPriceContainer extends StatefulWidget {
 class _CustomPriceContainerState extends State<CustomPriceContainer> {
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    double borderWidth = width * 0.005;
+
     return GestureDetector(
       onTap: () {
         setState(() {
@@ -25,16 +28,15 @@ class _CustomPriceContainerState extends State<CustomPriceContainer> {
           } else {
             context.read<PremiumViewModel>().setBoxClicked(false);
           }
-          //print(widget.isPremium);
         });
       },
       child: Container(
-        padding: const EdgeInsets.all(15.0),
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * 0.08,
+        padding: EdgeInsets.all(width * 0.04),
+        width: width,
+        height: height * 0.09,
         decoration: ShapeDecoration(
           shape: RoundedRectangleBorder(
-            side: BorderSide(width: width * 0.005, color: const Color(0xFF4E55FF)),
+            side: BorderSide(width: borderWidth, color: const Color(0xFF4E55FF)),
             borderRadius: BorderRadius.circular(150),
           ),
         ),
@@ -51,8 +53,12 @@ class _CustomPriceContainerState extends State<CustomPriceContainer> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  CheckBoxText(text: MyConstants.checkBoxText1),
-                  CheckBoxText(text: MyConstants.checkBoxText2),
+                  CheckBoxText(
+                    text: MyConstants.checkBoxText1,
+                  ),
+                  CheckBoxText(
+                    text: MyConstants.checkBoxText2,
+                  ),
                 ],
               ),
             ),

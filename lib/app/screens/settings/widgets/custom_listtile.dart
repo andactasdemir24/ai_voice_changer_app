@@ -12,10 +12,12 @@ class CustomListTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+
     return ListTile(
       title: Text(
         text,
-        style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w500, color: MyConstants.black),
+        style: TextStyle(fontSize: width * 0.06, fontWeight: FontWeight.w500, color: MyConstants.black),
       ),
     );
   }

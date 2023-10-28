@@ -26,147 +26,155 @@ class GenerateScreen extends StatelessWidget {
     final generationViewModel = Provider.of<GenerateViewModel>(context);
     final homeViewModel = Provider.of<HomeViewModel>(context);
     var read = context.read<HistoryViewModel>();
+
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+
     return Scaffold(
-        appBar: CustomAppBar(
-            text: MyConstants.appBarText,
-            icon: IconButton(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                icon: const Icon(
-                  Icons.arrow_back_ios_new,
-                ))),
-        body: GestureDetector(
-          onTap: () {
-            FocusScope.of(context).unfocus();
+      appBar: CustomAppBar(
+        text: MyConstants.appBarText,
+        icon: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
           },
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Align(
-                    alignment: Alignment.topLeft,
-                    child: Text(
-                      MyConstants.generateText,
-                      style: TextStyle(
-                          color: MyConstants.black,
-                          fontSize: 17,
-                          fontFamily: 'SF Pro Text',
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: -0.41),
-                    ),
+          icon: const Icon(
+            Icons.arrow_back_ios_new,
+          ),
+        ),
+      ),
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).unfocus();
+        },
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                child: Text(
+                  MyConstants.generateText,
+                  style: TextStyle(
+                    color: MyConstants.black,
+                    fontSize: width * 0.045,
+                    fontFamily: 'SF Pro Text',
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: -0.41,
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(10),
-                  child: TextField(
-                      controller: controller,
-                      maxLines: 5,
-                      maxLength: 180,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(18)),
-                          hintText: MyConstants.generatehintText)),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
+                child: TextField(
+                  controller: controller,
+                  maxLines: 5,
+                  maxLength: 180,
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(width * 0.04),
+                    ),
+                    hintText: MyConstants.generatehintText,
+                  ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-                  child: Align(
-                      alignment: Alignment.centerLeft,
-                      child: Text(MyConstants.selectAllGenerate,
-                          style: TextStyle(
-                            fontSize: 17,
-                            fontWeight: FontWeight.w600,
-                          ))),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.05, vertical: height * 0.01),
+                child: Text(
+                  MyConstants.selectAllGenerate,
+                  style: TextStyle(
+                    fontSize: width * 0.045,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: PersonsWidget(persons: persons), //PERSON LİSTESİ WİDGETI
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: CustomButton(
-                      onPressed: () async {
-                        if (controller.text == '') {
-                          showDialog(
-                            context: context,
-                            builder: (BuildContext context) {
-                              return AlertDialog(
-                                title: const Text(MyConstants.alertTitle),
-                                content: const Text(MyConstants.alertContent),
-                                actions: <Widget>[
-                                  TextButton(
-                                    child: const Text(MyConstants.alertClose),
-                                    onPressed: () {
-                                      Navigator.of(context).pop();
-                                    },
-                                  ),
-                                ],
-                              );
-                            },
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: height * 0.02),
+                child: PersonsWidget(persons: persons),
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+                child: CustomButton(
+                  onPressed: () async {
+                    if (controller.text == '') {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text(MyConstants.alertTitle),
+                            content: const Text(MyConstants.alertContent),
+                            actions: <Widget>[
+                              TextButton(
+                                child: const Text(MyConstants.alertClose),
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                              ),
+                            ],
                           );
-                        } else {
-                          await context.read<PremiumViewModel>().loadIsPremium();
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => const LottieScreen(),
-                              ));
-                          if (context.read<PremiumViewModel>().getIsPremium == true) {
+                        },
+                      );
+                    } else {
+                      await context.read<PremiumViewModel>().loadIsPremium();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const LottieScreen(),
+                        ),
+                      );
+                      if (context.read<PremiumViewModel>().getIsPremium == true) {
+                        await generationViewModel.fetchVoice().catchError((error) {
+                          Navigator.pop(context);
+                        });
+                        await homeViewModel.saveIsSeen2();
+                        read.add(History(
+                          veri: voiceurl,
+                          image: globalPerson.image,
+                          name: globalPerson.name,
+                          text: controller.text,
+                        ));
+                      } else {
+                        final userBox = await Hive.openBox<UserData>('user_data');
+                        if (!userBox.containsKey(0)) {
+                          final userData = UserData(0);
+                          userBox.put(0, userData);
+                        }
+                        UserData? userData = userBox.getAt(0);
+                        if (userData != null) {
+                          if (userData.buttonPressCount < maxButtonPressCount) {
                             await generationViewModel.fetchVoice().catchError((error) {
                               Navigator.pop(context);
-                            }); //sesi apiden aldığım ve kullandığım fonskiyoon
-                            await homeViewModel
-                                .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
+                            });
+                            await homeViewModel.saveIsSeen2();
                             read.add(History(
-                                //hive ile oluşturduğum verileri listelediğim yer
-                                veri: voiceurl,
-                                image: globalPerson.image,
-                                name: globalPerson.name,
-                                text: controller.text));
+                              veri: voiceurl,
+                              image: globalPerson.image,
+                              name: globalPerson.name,
+                              text: controller.text,
+                            ));
+                            userData.buttonPressCount++;
+                            userBox.putAt(0, userData);
                           } else {
-                            // Önce kutuyu açıp veriti alma
-                            final userBox = await Hive.openBox<UserData>('user_data');
-                            if (!userBox.containsKey(0)) {
-                              // Kutu içinde veri yoksa veya boşsa, varsayılan bir UserData nesnesi oluşturdum
-                              final userData = UserData(0); // Varsayılan değeri 0 olarak kabul edelim
-                              userBox.put(0, userData);
-                            }
-                            UserData? userData = userBox.getAt(0);
-                            if (userData != null) {
-                              // userData kullanılabilir
-                              if (userData.buttonPressCount < maxButtonPressCount) {
-                                await generationViewModel.fetchVoice().catchError((error) {
-                                  Navigator.pop(context);
-                                }); //sesi apiden aldığım ve kullandığım fonskiyoon
-                                await homeViewModel
-                                    .saveIsSeen2(); // shared ile eğer daha once veri oluşturduysam history kısmına atma fonsksionu
-                                read.add(History(
-                                    //hive ile oluşturduğum verileri listelediğim yer
-                                    veri: voiceurl,
-                                    image: globalPerson.image,
-                                    name: globalPerson.name,
-                                    text: controller.text));
-                                userData.buttonPressCount++;
-                                userBox.putAt(0, userData);
-                              } else {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => const InAppScreen(),
-                                    ));
-                              }
-                            } else {
-                              // Kullanıcı verileri yüklenemedi
-                            }
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const InAppScreen(),
+                              ),
+                            );
                           }
+                        } else {
+                          // Kullanıcı verileri yüklenemedi
                         }
-                        controller.clear();
-                      },
-                      text: MyConstants.generate), //CUSTOMBUTTON
+                      }
+                    }
+                    controller.clear();
+                  },
+                  text: MyConstants.generate,
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
