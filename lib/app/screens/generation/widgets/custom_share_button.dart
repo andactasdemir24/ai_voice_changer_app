@@ -1,4 +1,5 @@
 import 'package:ai_voice_changer_app/app/constants/const.dart';
+import 'package:ai_voice_changer_app/app/constants/global_veriables.dart';
 import 'package:flutter/material.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -23,7 +24,7 @@ class CustomShareButton extends StatelessWidget {
       ),
       child: TextButton(
         onPressed: () async {
-          await Share.share("message");
+          await Share.share(voiceurl);
         },
         style: TextButton.styleFrom(
           backgroundColor: Colors.transparent,

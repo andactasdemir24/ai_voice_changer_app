@@ -77,6 +77,7 @@ class _MediaPlayerScreenState extends State<MediaPlayerScreen> {
           text: MyConstants.mediaPlayerText,
           icon: IconButton(
               onPressed: () {
+                _audioPlayer.stop();
                 Navigator.push(context, MaterialPageRoute(builder: (context) => const GenerateScreenList()));
               },
               icon: const Icon(Icons.arrow_back_ios_new))),

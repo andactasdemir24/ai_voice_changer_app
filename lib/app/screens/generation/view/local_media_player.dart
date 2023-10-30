@@ -78,6 +78,7 @@ class _LocalMediaPlayerState extends State<LocalMediaPlayer> {
         text: MyConstants.mediaPlayerText,
         icon: IconButton(
           onPressed: () {
+            _audioPlayer.stop();
             Navigator.push(
               context,
               MaterialPageRoute(

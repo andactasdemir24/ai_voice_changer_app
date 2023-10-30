@@ -22,7 +22,7 @@ class VoiceService {
       String path = "";
 
       while (true) {
-        await Future.delayed(const Duration(milliseconds: 100));
+        await Future.delayed(const Duration(milliseconds: 200));
         final response2 = await http.get(Uri.parse('$baseUrlGet/${token.inference_job_token}'));
         if (response2.statusCode == 200) {
           VoiceModel voice = VoiceModel.fromJson(response2.body);
