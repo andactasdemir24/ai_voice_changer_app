@@ -36,6 +36,7 @@ class GenerateScreen extends StatelessWidget {
         icon: IconButton(
           onPressed: () {
             Navigator.pop(context);
+            controller.clear();
           },
           icon: const Icon(
             Icons.arrow_back_ios_new,
@@ -68,7 +69,7 @@ class GenerateScreen extends StatelessWidget {
                 child: TextField(
                   controller: controller,
                   maxLines: 5,
-                  maxLength: 180,
+                  maxLength: 250,
                   decoration: InputDecoration(
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(width * 0.04),
