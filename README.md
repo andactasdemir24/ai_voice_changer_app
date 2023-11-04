@@ -24,10 +24,6 @@ A completely Responsive AI Voice Changer App- Works on Android, iOS & Web!
 - settings / premium
 - Share audio
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
 ## Galery 
 ![Screenshot_1698743349](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/52c092a9-4cc1-4267-a78f-450d62839711)
 ![Screenshot_1698743352](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/0eb0bb7c-df93-4195-a4da-58e3d16c1dfc)
