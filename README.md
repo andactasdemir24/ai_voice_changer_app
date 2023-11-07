@@ -1,5 +1,9 @@
 # ai_voice_changer_app
 
+I would like to share with you the "AI Voice Changer" application that I developed with Flutter.
+The application offers the ability to transform and personalize the voice of famous characters.
+At the beginning of the application, you are greeted by the "Onboarding" page after an animation. Then the "Premium" page appears. It depends on the user's desire to buy or not, but the user has the chance to produce a certain number of sounds for free.
+Afterwards, the "Generate" page welcomes us. On this page, you can write any text you want, select the character you want and create a sound. From the "Settings" page, you can see how many rights we have and the ability to purchase premium if you wish. You can also share and download the audio created on the "Audio Player" page.
 A completely Responsive AI Voice Changer App- Works on Android, iOS & Web!
 
 ## Used technologies
@@ -14,15 +18,18 @@ A completely Responsive AI Voice Changer App- Works on Android, iOS & Web!
 
 ## Features
 
-- onboarding
+- Onboarding
 - Buy Premium
 - Generation voice
 - Listen Audio
-- history
-- lottie
-- webview
-- settings / premium
+- History
+- Lottie
+- Webview
+- Settings / Premium
 - Share audio
+
+## Video Links
+https://www.linkedin.com/feed/update/urn:li:activity:7127560813011251200/
 
 ## Galery 
 ![Screenshot_1698743349](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/52c092a9-4cc1-4267-a78f-450d62839711)
