@@ -32,14 +32,13 @@ A completely Responsive AI Voice Changer App- Works on Android, iOS & Web!
 https://www.linkedin.com/feed/update/urn:li:activity:7127560813011251200/
 
 ## Galery 
-![Screenshot_1698743349](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/52c092a9-4cc1-4267-a78f-450d62839711)
-![Screenshot_1698743352](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/0eb0bb7c-df93-4195-a4da-58e3d16c1dfc)
-![Screenshot_1698743306](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/8d3899a6-b8d8-4a52-9528-dfd0a64a012c)
-![Screenshot_1698743362](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/eb2f9c85-dc31-4dc9-b3ce-f10fae49f3c6)
-![Screenshot_1698743369](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/969f1dcf-eb70-452c-9ac7-a01e7d5d540c)
-![Screenshot_1698743399](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/8491972d-b2f5-48b0-be84-f6aba0df578b)
-![Screenshot_1698743436](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/73de8a6c-36b0-4a6b-8797-fd239427cdfb)
-![Screenshot_1698743470](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/468af60f-90e9-4d29-b182-fa12dc1b7374)
-![Screenshot_1698743473](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/842b9d40-e36b-4f77-8c06-52b2a8f8416d)
-![Screenshot_1698743476](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/79a5d613-9cff-4b52-bb76-2f3d61976fb8)
-
+![Screenshot_1699343691](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/1e8b35dd-09c5-44a7-b6fb-940a0eb550ad)
+![Screenshot_1699343700](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/6b91acff-03d1-4bc0-94e3-1de99ef4e221)
+![Screenshot_1699343702](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/77adea87-728a-44f8-8158-55b6e1a6505d)
+![Screenshot_1699343706](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/3dd5e59a-5b64-40aa-9b16-61e42c293fce)
+![Screenshot_1699343711](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/bf8c992d-3530-425d-8ecc-102b9956b34e)
+![Screenshot_1699343738](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/bfef419b-a71f-435e-8719-16a4aa7d8a76)
+![Screenshot_1699343753](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/b1dfa949-eff9-42a8-bf34-055fe0c604e9)
+![Screenshot_1699343753](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/2f40689d-274c-4e97-96f7-a5eb07046927)
+![Screenshot_1699343756](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/fb34a216-8264-4366-b896-93a490d1764a)
+![Screenshot_1699343759](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/16632e4c-ecd6-44a0-84a1-e52c026e6bf1)
