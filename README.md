@@ -39,6 +39,5 @@ https://www.linkedin.com/feed/update/urn:li:activity:7127560813011251200/
 ![Screenshot_1699343711](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/bf8c992d-3530-425d-8ecc-102b9956b34e)
 ![Screenshot_1699343738](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/bfef419b-a71f-435e-8719-16a4aa7d8a76)
 ![Screenshot_1699343753](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/b1dfa949-eff9-42a8-bf34-055fe0c604e9)
-![Screenshot_1699343753](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/2f40689d-274c-4e97-96f7-a5eb07046927)
 ![Screenshot_1699343756](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/fb34a216-8264-4366-b896-93a490d1764a)
 ![Screenshot_1699343759](https://github.com/andactasdemir24/ai_voice_changer_app/assets/96003255/16632e4c-ecd6-44a0-84a1-e52c026e6bf1)
